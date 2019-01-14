@@ -50,12 +50,12 @@
                 <Icon type="md-qr-scanner" size="18"></Icon>
             </Tooltip>
         </span>
-        <span class="copy" @click="clip">
+        <!-- <span class="copy" @click="clip">
             <Tooltip :content="'复制代码'" placement="top" transfer>
                 <Icon type="md-clipboard" size="18" v-show="!copied"></Icon>
                 <Icon type="md-checkmark" size="18" v-show="copied" style="color:#5cb85c"></Icon>
             </Tooltip>
-        </span>
+        </span> -->
         <Modal class-name="code-scale-modal" :title="title" width="65" v-model="openScale">
             <pre :class="{bg: bg}"><code :class="language" ref="code2"></code></pre>
         </Modal>
@@ -72,8 +72,8 @@
 </template>
 <script>
     import hljs from 'highlightjs/highlight.pack.js';
+    import 'highlightjs/styles/atom-one-light.css';
     import Clipboard from 'clipboard';
-    import tag_map from './tag-map';
 
     function replaceTag(source, tagMap) {
         Object.keys(tagMap).forEach(i => {
@@ -157,63 +157,6 @@
             scale () {
                 this.openScale = true;
             },
-			getSource(source, type){
-				const regex = new RegExp(`<${type}[^>]*>`);
-				let openingTag = source.match(regex);
-
-				if (!openingTag) return '';
-				else openingTag = openingTag[0];
-
-                return source.slice(source.indexOf(openingTag) + openingTag.length, source.lastIndexOf(`</${type}>`));
-            },
-            openFiddle(){
-                const source = this.$refs.code.textContent;
-
-                const script = this.getSource(source, 'script').replace(/export default/, 'var Main =');
-                const style = this.getSource(source, 'style');
-                const template = '<div id="app">' + replaceTag(this.getSource(source, 'template'), tag_map) + '</div>';
-
-                const html = [
-                    '<script src="//unpkg.com/vue/dist/vue.js"></scr' + 'ipt>',
-                    '<script src="//unpkg.com/iview/dist/iview.min.js"></scr' + 'ipt>',
-                    template
-                ].join('\n');
-
-                const css = '@import url("//unpkg.com/iview/dist/styles/iview.css");\n#app{padding: 32px;}' + style;
-                const js = script + '\nvar Component = Vue.extend(Main)\nnew Component().$mount(\'#app\')';
-
-                const data = {
-                    js: js,
-                    css: css,
-                    html: html,
-                    panel_css: 1,
-                    panel_js: 3
-                };
-
-                const formAttributes = {
-                    method: 'post',
-                    action: 'https://jsfiddle.net/api/post/library/pure/',
-                    target: '_blank',
-                    id: 'fiddle-form',
-                    style: 'display: none;'
-                }
-
-                const node = document.createElement('textarea');
-                const form = document.createElement('form');
-                for (const attr in formAttributes) {
-                    form.setAttribute(attr, formAttributes[attr]);
-                }
-
-                for (let name in data) {
-                    node.name = name;
-                    node.value = data[name].toString();
-                    form.appendChild(node.cloneNode());
-                }
-
-                document.body.appendChild(form);
-                form.submit();
-                document.body.removeChild(form);
-            }
         }
     }
 </script>

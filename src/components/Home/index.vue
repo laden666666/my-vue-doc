@@ -77,7 +77,7 @@ export default {
     position: relative;
 }
 .home-version_value{
-    bottom: -.2rem;
+    bottom: -.3rem;
     left: .1rem;
     font-size: 1rem;
     position: absolute;
