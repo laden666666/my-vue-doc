@@ -9,7 +9,7 @@
                         <p class="menu-nav_link" v-else>{{menu1.title}}</p>
                         <ul class="menu-nav_list" v-if="menu1.children && menu1.children.length > 0">
                             <li class="menu-nav_item" v-for="(menu2, index2) in menu1.children" :key="index2">
-                                <a class="menu-nav_link" v-if="menu1.path" :href="menu2.path">{{menu2.title}}</a>
+                                <a class="menu-nav_link" v-if="menu2.path" :href="menu2.path">{{menu2.title}}</a>
                                 <p class="menu-nav_link" v-else>{{menu2.title}}</p>
                             </li>
                         </ul>

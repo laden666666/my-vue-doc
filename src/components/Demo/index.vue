@@ -82,7 +82,9 @@
                 return style;
             },
             vueSource () {
-                return this.code || window.atob(this.demo.__vueSource) 
+                let vueSource = decodeURI( window.atob(this.demo.__vueSource)) || ''
+                vueSource = vueSource.trim().replace('<template></template>')
+                return this.code || decodeURI( window.atob(this.demo.__vueSource)) 
             },
             style () {
                 let style = {

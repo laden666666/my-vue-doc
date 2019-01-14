@@ -1,5 +1,5 @@
 <template>
     <Doc>
-        <P>11</P>
+        <P>Doc是根标签</P>
     </Doc>
 </template>

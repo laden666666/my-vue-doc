@@ -40,14 +40,11 @@ export default {
         return {
             isScrolling: false,
             menu: [{
-                title: 'xxx',
-                path: '#/',
+                title: '文档控件',
                 children: [{
-                    title: 'yyy',
+                    title: '基础文档控件',
                     path: '#/',
                 }]
-            },{
-                title: 'xxx',
             },]
         }
     },
