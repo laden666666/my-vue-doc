@@ -5,11 +5,13 @@
             <div class="menu-nav">
                 <ul class="menu-nav_list">
                     <li class="menu-nav_item" v-for="(menu1, index1) in menu" :key="index1">
-                        <a class="menu-nav_link" v-if="menu1.path" :href="menu1.path">{{menu1.title}}</a>
+                        <a class="menu-nav_link" :class="{'active': '#' + $route.path == menu1.path}" 
+                            v-if="menu1.path" :href="menu1.path">{{menu1.title}}</a>
                         <p class="menu-nav_link" v-else>{{menu1.title}}</p>
                         <ul class="menu-nav_list" v-if="menu1.children && menu1.children.length > 0">
                             <li class="menu-nav_item" v-for="(menu2, index2) in menu1.children" :key="index2">
-                                <a class="menu-nav_link" v-if="menu2.path" :href="menu2.path">{{menu2.title}}</a>
+                                <a class="menu-nav_link" :class="{'active': '#' + $route.path == menu2.path}" 
+                                    v-if="menu2.path" :href="menu2.path">{{menu2.title}}</a>
                                 <p class="menu-nav_link" v-else>{{menu2.title}}</p>
                             </li>
                         </ul>
@@ -151,6 +153,9 @@ export default {
     }
     a.menu-nav_link:hover{
         text-decoration: underline;
+    }
+    a.menu-nav_link.active{
+        color: #42b983;
     }
     .menu-toggle{
         box-sizing: border-box;

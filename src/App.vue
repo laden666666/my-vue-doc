@@ -11,6 +11,14 @@
                 version="v0.0.0"
                 subhead="A magical documentation site generator."
                 :describe="'Simple and lightweight (~21kB gzipped)\nNo statically built html files\nMultiple themes'"
+                :link="[{
+                    title: 'test',
+                    path: '#/'
+                }, {
+                    title: 'test',
+                    path: '#/',
+                    primary: true,
+                },]"
             ></Home>
             <Menu :menu="menu">
                 <span id="menu"></span>
@@ -44,6 +52,9 @@ export default {
                 children: [{
                     title: '基础文档控件',
                     path: '#/',
+                }, {
+                    title: '进阶文档控件',
+                    path: '#/Advanced',
                 }]
             },]
         }
@@ -139,8 +150,15 @@ html, body{
     padding: 0;
     margin: 0;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
+}
+*{
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
+    box-sizing: border-box;
 }
 *::-webkit-scrollbar{
     width:4px

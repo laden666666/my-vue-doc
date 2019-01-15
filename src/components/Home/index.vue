@@ -13,8 +13,11 @@
             <p class="home-subhead" v-if="subhead">{{subhead}}</p>
             <pre class="home-describe" v-if="describe">{{describe}}</pre>
 
-            <div class="home-buttons">
-                <button class="home-button">测试</button>
+            <div class="home-buttons" v-if="link">
+                <a v-for="(item, index) in link" :key="index" class="home-button" 
+                    :class="{'home-button_primary': item.primary}" :href="item.link">
+                    {{item.title}}
+                </a>
             </div>
         </div>
     </div>
@@ -23,21 +26,36 @@
 export default {
     name: 'Home',
     props: {
+        // 库的名字
         name: {
             type: String,
             isRequired: true,
         },
+        // 库的版本
         version: {
             type: String,
         },
+        // 库的副标题
         subhead: {
             type: String,
         },
+        // 库的描述，支持换行，用\n表示换行
         describe: {
             type: String,
         },
+        // 一个图片的url，库的logo
         logo: {
             type: String,
+        },
+        // 一个数组，用于显示库的相关资源链接
+        // 具体配置如下：path表示超链接路径，title表示链接标题，primary表示该标签是否是强调显示的标签
+        // 例如：[{
+        //     path: '超链接路径',
+        //     title: '链接标题',
+        //     primary: false,
+        // }]
+        link: {
+            type: Array,
         },
     }
 }
@@ -131,5 +149,15 @@ export default {
     background-color: #42b983;
     border : 1px solid #42b983;
     color: #fff;
+}
+.home-button.home-button_primary{
+    background-color: #42b983;
+    border : 1px solid #42b983;
+    color: #fff;
+}
+.home-button.home-button_primary:hover{
+    background-color: transparent;
+    border : 1px solid #42b983;
+    color: #42b983;
 }
 </style>
