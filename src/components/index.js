@@ -4,6 +4,7 @@ import Background from './Background'
 import Menu from './Menu'
 import Demo from './Demo'
 import Code from './Code'
+import Props from './Props'
 
 // 文档相关
 import Doc from './Doc'
@@ -19,6 +20,7 @@ Vue.component('Background', Background)
 Vue.component('Menu', Menu)
 Vue.component('Demo', Demo)
 Vue.component('Code', Code)
+Vue.component('Props', Props)
 
 // 文档相关
 Vue.component('Doc', Doc)

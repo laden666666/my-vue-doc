@@ -1,8 +1,8 @@
 <template>
     <div @mousewheel="onMouseWheel" 
-    @touchstart="onTouchstart" 
-    @touchmove="onTouchmove" 
-    @touchend="onTouchend">
+        @touchstart="onTouchstart" 
+        @touchmove="onTouchmove" 
+        @touchend="onTouchend">
         <Background>
             <span id="home"></span>
             <Home 
@@ -38,7 +38,9 @@ var Ease = {
         return -c *(t /= d)*(t-2) + b;
     },
     easeInOut: function(t, b, c, d) {
-        if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+        if ((t /= d / 2) < 1) {
+            return c / 2 * t * t + b;
+        }
         return -c / 2 * ((--t) * (t-2) - 1) + b;
     }
 }
@@ -50,8 +52,11 @@ export default {
             menu: [{
                 title: '文档控件',
                 children: [{
-                    title: '基础文档控件',
+                    title: '主页',
                     path: '#/',
+                }, {
+                    title: '基础文档控件',
+                    path: '#/Base',
                 }, {
                     title: '进阶文档控件',
                     path: '#/Advanced',

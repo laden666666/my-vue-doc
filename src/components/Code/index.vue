@@ -1,12 +1,12 @@
 <style scoped>
     .code{
-        background-color: #f7f7f7;
-        margin: 10px 0;
-        padding: 3px 5px;
+        background-color: #fafafa;
         border-radius: 5px;
+        margin: 10px 0;
     }
-    .code pre code{
-        padding: 5px 15px;
+    .code pre{
+        padding: 10px 15px;
+        overflow-x: auto;
     }
     div{
         position: relative;
@@ -22,7 +22,7 @@
         cursor: pointer;
     }
     span.scale{
-        right: 25px;
+        right: 5px;
     }
     span.open-fiddle{
         right: 50px;
@@ -34,17 +34,9 @@
         color: #5c6b77;
     }
 </style>
-<style>
-    .code-scale-modal .ivu-modal-body{
-        background-color: #f7f7f7;
-    }
-    .code-scale-modal pre{
-        font-size: 14px;
-    }
-</style>
 <template>
     <div class="code" v-if="!onlyBtn">
-        <pre :class="{bg: bg}"><code :class="language" ref="code"><slot></slot></code></pre>
+        <pre :class="{bg: bg}"><code :class="language" ref="code" v-html="showCode"></code></pre>
         <span class="scale" @click="scale">
             <Tooltip :content="'放大'" placement="top" transfer>
                 <Icon type="md-qr-scanner" size="18"></Icon>
@@ -56,17 +48,11 @@
                 <Icon type="md-checkmark" size="18" v-show="copied" style="color:#5cb85c"></Icon>
             </Tooltip>
         </span> -->
-        <Modal class-name="code-scale-modal" :title="title" width="65" v-model="openScale">
-            <pre :class="{bg: bg}"><code :class="language" ref="code2"></code></pre>
-        </Modal>
     </div>
 
     <Button v-else @click="scale" icon="md-qr-scanner"  shape="circle">
         查看代码
         <div ref="code" style="display: none"><slot></slot></div>
-        <Modal class-name="code-scale-modal" :title="title" width="65" v-model="openScale">
-            <pre :class="{bg: bg}"><code :class="language" ref="code2"></code></pre>
-        </Modal>
     </Button>
 
 </template>
@@ -74,6 +60,7 @@
     import hljs from 'highlightjs/highlight.pack.js';
     import 'highlightjs/styles/atom-one-light.css';
     import Clipboard from 'clipboard';
+    import ShowScale from './ShowScale';
 
     function replaceTag(source, tagMap) {
         Object.keys(tagMap).forEach(i => {
@@ -84,29 +71,32 @@
         return source;
     }
 
+    let div = document.createElement('div')
+
     export default {
         props: {
+            // 展示代码的语言
             lang: {
                 type: String,
                 default: 'javascript'
             },
-            bg: {
+            // 只渲染一个展示代码的按钮，而不直接显示代码
+            onlyBtn: {
                 type: Boolean,
                 default: false
             },
-            onlyBtn: {
-
-                type: Boolean,
-                default: false
+            // 源代码
+            code: {
+                type: String,
+                required: true
             }
         },
         data () {
             return {
-                openScale: false,
-                code: '',
                 copied: false,
                 docLang: this.$lang,
-                title: 'Code'
+                title: 'Code',
+                bg: false,
             }
         },
         computed: {
@@ -116,15 +106,14 @@
                 } else {
                     return this.lang;
                 }
-            }
+            },
+            showCode(){
+                div.textContent = this.code;
+                hljs.highlightBlock(div);
+                return div.innerHTML
+            },
         },
         mounted () {
-            this.code = this.$refs.code.innerHTML.replace(/\n/, '');
-            this.$refs.code.innerHTML = this.code;
-            hljs.highlightBlock(this.$refs.code);
-
-            this.$refs.code2.innerHTML = this.code;
-            hljs.highlightBlock(this.$refs.code2);
 
             const Demo = this.$parent.$parent.$parent;
             if (Demo.$options.name === 'Demo') {
@@ -155,7 +144,17 @@
                 });
             },
             scale () {
-                this.openScale = true;
+                this.$MyDialog.open({
+                    title: this.title,
+                    propsData: {
+                        lang: this.language,
+                        code: this.code,
+                        bg: this.bg
+                    },
+                    width: 800,
+                    height: 500,
+                    content: ShowScale
+                })
             },
         }
     }

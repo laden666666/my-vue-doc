@@ -18,7 +18,7 @@
         <div class="example-split"></div>
         <div ref="code" class="example-code" :style="codeHeight">
             <div :style="style">
-                <Code lang="html">{{vueSource}}</Code>
+                <Code lang="html" :code="vueSource"></Code>
             </div>
             <div class="example-code-more" v-if="showMore" @click="showCode = !showCode">
                 <button type="ios-arrow-down" v-show="!showCode"></button>
@@ -101,7 +101,6 @@
                 const demo_height = this.$refs.demo.clientHeight;
                 const code_height = this.$refs.code.clientHeight + 20;
                 this.code_height = code_height;
-                console.log(code_height, demo_height)
                 if ((code_height <= demo_height) && !this.hideCode) {
                     this.showMore = false;
                 }

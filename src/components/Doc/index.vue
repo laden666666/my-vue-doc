@@ -12,7 +12,7 @@ export default {
 <style lang="css" scoped>
     .doc{
         margin: 0 auto;
-        max-width: 800px;
+        max-width: 100%;
         padding: 30px 15px 40px;
         position: relative;
         line-height: 1.6em;

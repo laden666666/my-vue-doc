@@ -1,42 +1,16 @@
 <template>
     <Doc>
         <H1>文档框架</H1>
-        <P>这是一个用于创建my系列控件文档的框架，样式参考<A href="https://docsify.js.org">docsify</A>，框架基于<A href="https://www.iviewui.com">iview</A>。</P>
+        <P>这是一个用于创建<Strong>my系列控件</Strong>文档的框架，样式参考<A href="https://docsify.js.org">docsify</A>，框架基于<A href="https://www.iviewui.com">iview</A>。目前不对外开放，仅针对<Strong>my系列控件</Strong>定制化使用。</P>
 
-        <H2>文档根标签</H2>
-        <P>一篇文档的根标签。</P>
+        <H2>目录说明</H2>
+        <P></P>
 
-        <Demo title="Doc示例" :demo="Doc">
-            <div slot="desc">使用Doc定义文档根标签</div>
-        </Demo>
+        <H3>例子目录</H3>
+        <P>供Demo控件使用的例子vue文件所放目录。该目录的文件会通过框架开发的<Strong>vue-source_loader</Strong>将Demo的源码读取出来，供Demo框架展示。</P>
 
-        <H2>文档标题</H2>
-        <P>使用H1、H2、H3定义文档标签。</P>
-
-        <Demo title="文档标题示例" :demo="Title">
-            <div slot="desc">使用H1、H2、H3定义文档标签。</div>
-        </Demo>
-
-        <H2>文档段落</H2>
-        <P>使用P标签定义文档段落。</P>
-
-        <Demo title="文档段落示例" :demo="P">
-            <div slot="desc">使用P标签定义文档段落。</div>
-        </Demo>
-
-        <H2>超链接</H2>
-        <P>使用A标签定义超链接，支持href属性。超链接中，如果href是非“http”、“https”、“//”开头的，表示是站内链接，会跳转到该链接处；如果是表示非站内链接，会再打开一个浏览器tab跳转的链接页面。</P>
-
-        <Demo title="文档段落示例" :demo="A">
-            <div slot="desc">使用A标签定义超链接。</div>
-        </Demo>
-
-        <H2>强调</H2>
-        <P>使用Strong标签定义强调的语句。</P>
-
-        <Demo title="文档段落示例" :demo="Strong">
-            <div slot="desc">使用Strong标签定义强调的语句。</div>
-        </Demo>
+        <H3>Pages目录</H3>
+        <P>说明文档所放的目录。</P>
     </Doc>
 </template>
 <script>

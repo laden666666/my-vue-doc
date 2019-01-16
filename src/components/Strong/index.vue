@@ -9,6 +9,6 @@
     margin: 0 2px;
     padding: 3px 5px;
     white-space: pre-wrap;
-    font-size: 16px;
+    font-size: 1em;
 }
 </style>

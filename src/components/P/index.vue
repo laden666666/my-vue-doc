@@ -8,7 +8,7 @@
     padding-bottom: 1.2em;
     position: relative;
     z-index: 1;
-    font-size: 16px;
+    font-size: 14px;
     color: #34495e;
 }
 </style>

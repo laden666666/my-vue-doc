@@ -1,17 +1,20 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
 import './components'
+
+import MyDialog from 'my-vue-dialog';
+import 'my-vue-dialog/dist/my-vue-dialog.css';
+Vue.use(MyDialog)
+
 import {Icon, Button, Tooltip, Modal} from 'iview';
 import 'iview/dist/styles/iview.css';
-
 Vue.component('Icon', Icon)
 Vue.component('Button', Button)
 Vue.component('Tooltip', Tooltip)
 Vue.component('Modal', Modal)
-
 
 Vue.config.productionTip = false
 
@@ -43,9 +46,10 @@ Vue.config.productionTip = false
 }());
 
 /* eslint-disable no-new */
-new Vue({
+window.app = new Vue({
     el: '#app',
     router,
     components: { App },
-    template: '<App/>'
+    template: '<App/>',
+    myDialog: {key: 'my-vue-doc'}
 })
