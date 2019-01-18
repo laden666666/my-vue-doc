@@ -5,7 +5,13 @@
 </template>
 <script>
 export default {
-    name: 'Doc'
+    inject: ['clear'],
+    name: 'Doc',
+    created(){
+        if( this.$parent.$parent.$vnode.componentOptions.tag === 'Menu' ){
+            this.clear()
+        }
+    }
 }
 </script>
 

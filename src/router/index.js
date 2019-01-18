@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/Home'
 import Base from '../pages/Base'
-import Advanced from '../pages/Advanced'
+
+import AdvancesCode from '../pages/Advances/Code'
+import AdvancesDemo from '../pages/Advances/Demo'
+import AdvancesInstructions from '../pages/Advances/Instructions'
+import AdvancesProps from '../pages/Advances/Props'
 
 Vue.use(Router)
 
@@ -19,9 +23,24 @@ export default new Router({
             component: Base,
         },
         {
-            path: '/Advanced',
-            name: 'Advanced',
-            component: Advanced,
+            path: '/Advances/Code',
+            name: 'AdvancesCode',
+            component: AdvancesCode,
+        },
+        {
+            path: '/Advances/Demo',
+            name: 'AdvancesDemo',
+            component: AdvancesDemo,
+        },
+        {
+            path: '/Advances/Instructions',
+            name: 'AdvancesInstructions',
+            component: AdvancesInstructions,
+        },
+        {
+            path: '/Advances/Props',
+            name: 'AdvancesProps',
+            component: AdvancesProps,
         },
     ]
 })

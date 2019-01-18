@@ -3,20 +3,7 @@
         <!-- 侧拉菜单 -->
         <aside class="menu-aside" :class="{fixed: fixed}">
             <div class="menu-nav">
-                <ul class="menu-nav_list">
-                    <li class="menu-nav_item" v-for="(menu1, index1) in menu" :key="index1">
-                        <a class="menu-nav_link" :class="{'active': '#' + $route.path == menu1.path}" 
-                            v-if="menu1.path" :href="menu1.path">{{menu1.title}}</a>
-                        <p class="menu-nav_link" v-else>{{menu1.title}}</p>
-                        <ul class="menu-nav_list" v-if="menu1.children && menu1.children.length > 0">
-                            <li class="menu-nav_item" v-for="(menu2, index2) in menu1.children" :key="index2">
-                                <a class="menu-nav_link" :class="{'active': '#' + $route.path == menu2.path}" 
-                                    v-if="menu2.path" :href="menu2.path">{{menu2.title}}</a>
-                                <p class="menu-nav_link" v-else>{{menu2.title}}</p>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <MenuNavList :menu="menu" :titleList="titleList"></MenuNavList>
             </div>
             <!-- 菜单显示隐藏的切换按钮 -->
             <div class="menu-toggle">
@@ -33,6 +20,10 @@
 </template>
 
 <script>
+import MenuNavList from './MenuNavList'
+import debounce from 'lodash.debounce'
+
+let cacheTitleDom
 export default {
     props: {
         // 菜单信息，是一个数组，具体配置如下：
@@ -52,27 +43,88 @@ export default {
             isRequired: true
         }
     },
+    provide(){
+        return {
+            clear: ()=>{
+                this.titleList = []
+                cacheTitleDom = null
+            },
+            setTitle: (level, title)=>{
+                this.titleList.push({
+                    level,
+                    title,
+                })
+            }
+        }
+    },
     data() {
         return {
             fixed: false,
-            showToggle: false
+            showToggle: false,
+            titleList: [],
         }
     },
     methods:{
         toggle(){
             this.showToggle = !this.showToggle
-        }
+        },
     },
     mounted(){
-        window.onscroll = ()=> {
+
+        let handleHash = debounce(()=>{
+            if(!cacheTitleDom){
+                cacheTitleDom = []
+                this.titleList.forEach(item=>{
+                    try{
+                        let title = document.querySelector(`[name='${item.title}']`)
+                        if(title){
+                            cacheTitleDom.push(title)
+                        }
+                    } catch(e){}
+                })
+            }
+
+            if(!cacheTitleDom.length || window.scrollY <= window.innerHeight){
+                this.$router.replace(this.$router.history.current.path)
+            } else {
+                for(let title of cacheTitleDom){
+                    if(title && title.getBoundingClientRect().top >= 0){
+                        this.$router.replace(this.$router.history.current.path + '#' + title.getAttribute('name'))
+                        break ;
+                    }
+                }
+            }
+        }, 500, {maxWait: 500})
+
+        window.addEventListener('scroll', ()=> {
             let rect = this.$el.getBoundingClientRect()
             if(rect.top <= 0){
                 this.fixed = true
             } else {
                 this.fixed = false
             }
+
+            handleHash()
+        }, {
+            passive: true
+        })
+        if(this.$route.hash){
+            try{
+                let title = document.querySelector(`[name='${this.$route.hash.substr(1)}']`)
+                if(title){
+                    title.scrollIntoView()
+                }
+            } catch(e){console.log(e)}
+        } else if(this.$route.path != '/'){
+            let title = document.querySelector(`#menu`)
+            if(title){
+                title.scrollIntoView()
+            }
         }
-    }
+    },
+    components: {
+        MenuNavList
+    },
 }
 </script>
 
@@ -106,56 +158,6 @@ export default {
     }
     .menu-aside::-webkit-scrollbar-thumb{
         background:transparent;
-    }
-    .menu-nav_list{
-        list-style: none;
-        margin: 0 0 0 15px;
-        padding: 0;
-    }
-    .menu-nav_item{
-        margin: 6px 0;
-    }
-    .menu-nav_item a{
-        color: #505d6b;
-        font-size: 14px;
-        font-weight: 400;
-        overflow: hidden;
-        text-decoration: none;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        border-bottom: none;
-        display: block;
-        list-style: none;
-    }
-    p.menu-nav_link{
-        color: #364149;
-        font-size: 14px;
-        font-weight: 700;
-        overflow: hidden;
-        text-decoration: none;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        border-bottom: none;
-        display: block;
-        list-style: none;
-    }
-    a.menu-nav_link{
-        color: #505d6b;
-        font-size: 14px;
-        font-weight: 400;
-        overflow: hidden;
-        text-decoration: none;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        border-bottom: none;
-        display: block;
-        list-style: none;
-    }
-    a.menu-nav_link:hover{
-        text-decoration: underline;
-    }
-    a.menu-nav_link.active{
-        color: #42b983;
     }
     .menu-toggle{
         box-sizing: border-box;
@@ -196,7 +198,7 @@ export default {
         left: 0;   
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 767px) {
         .menu-content{
             width: 100%; 
             left: 0;   

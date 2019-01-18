@@ -14,10 +14,21 @@
             <pre class="home-describe" v-if="describe">{{describe}}</pre>
 
             <div class="home-buttons" v-if="link">
-                <a v-for="(item, index) in link" :key="index" class="home-button" 
-                    :class="{'home-button_primary': item.primary}" :href="item.link">
-                    {{item.title}}
-                </a>
+                <template v-for="(item, index) in link">
+                    <a :key="index" class="home-button" 
+                        v-if="item.path && (item.path.startsWith('http') || item.path.startsWith('//'))"
+                        :href="item.path" 
+                        target="_blank"
+                        :class="{'home-button_primary': item.primary}">
+                        {{item.title}}
+                    </a>
+                    <a :key="index" class="home-button" v-else
+                        @click="goLink(item.path)"
+                        target="_blank"
+                        :class="{'home-button_primary': item.primary}">
+                        {{item.title}}
+                    </a>
+                </template>
             </div>
         </div>
     </div>
@@ -57,6 +68,33 @@ export default {
         link: {
             type: Array,
         },
+    },
+    methods: {
+        goLink(path){
+            let position = path.indexOf('#')
+            let hash = ~position ? path.substr(position + 1) : ''
+            let routePath = path.split('#')[0]
+            if(this.$route.path == routePath){
+                if(hash){
+                    try{
+                        let title = document.querySelector(`[name='hash']`)
+                        if(title){
+                            title.scrollIntoView()
+                        }
+                        this.$router.replace(path)
+
+                    } catch(e){console.log(e)}
+                } else {
+                    let title = document.querySelector(`#menu`)
+                    if(title){
+                        title.scrollIntoView()
+                    }
+                }
+                
+            } else{
+                this.$route.push(routePath)
+            }
+        }
     }
 }
 </script>

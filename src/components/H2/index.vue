@@ -1,15 +1,13 @@
 <template>
-    <h2 class="h2" :id="text"><slot></slot></h2>
+    <h2 class="h2"><a :name="text" class="h2-anchor"></a><slot></slot></h2>
 </template>
 <script>
+import H from '../H1/H'
 export default {
-    computed: {
-        text(){
-            let $slots = this.$slots
-            if($slots.default && $slots.default[0]){
-                return $slots.default[0].text
-            }
-            return ''
+    extends: H,
+    data(){
+        return {
+            level: 2
         }
     }
 }
@@ -22,5 +20,10 @@ export default {
     border-bottom: 1px solid #ddd;
     font-weight: 600;
     color: #2c3e50;
+    position: relative;
+}
+.h2-anchor{
+    position: absolute;
+    top: -10px;
 }
 </style>

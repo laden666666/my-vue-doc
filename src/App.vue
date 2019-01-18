@@ -6,19 +6,7 @@
         <Background>
             <span id="home"></span>
             <Home 
-                name="my-vue-doc"
-                logo="https://docsify.js.org/_media/icon.svg"
-                version="v0.0.0"
-                subhead="A magical documentation site generator."
-                :describe="'Simple and lightweight (~21kB gzipped)\nNo statically built html files\nMultiple themes'"
-                :link="[{
-                    title: 'test',
-                    path: '#/'
-                }, {
-                    title: 'test',
-                    path: '#/',
-                    primary: true,
-                },]"
+                v-bind="app"
             ></Home>
             <Menu :menu="menu">
                 <span id="menu"></span>
@@ -28,6 +16,8 @@
     </div>
 </template>
 <script>
+import app from './app.js'
+
 var isFirefox = navigator.userAgent.indexOf("Firefox") != -1;
 
 var Ease = {
@@ -49,6 +39,7 @@ export default {
     data(){
         return {
             isScrolling: false,
+            app,
             menu: [{
                 title: '文档控件',
                 children: [{
@@ -59,7 +50,19 @@ export default {
                     path: '#/Base',
                 }, {
                     title: '进阶文档控件',
-                    path: '#/Advanced',
+                    children: [{
+                        title: '源代码展示控件',
+                        path: '#/Advances/Code',
+                    }, {
+                        title: '属性说明书',
+                        path: '#/Advances/Instructions',
+                    }, {
+                        title: 'Vue的props说明书',
+                        path: '#/Advances/Props',
+                    }, {
+                        title: 'Vue的Demo展示',
+                        path: '#/Advances/Demo',
+                    }]
                 }]
             },]
         }

@@ -1,22 +1,39 @@
 <template>
     <div class="props">
-        <table class="mydoc_api_table">
-            <tr>
-                <th v-if="calcPropskey['name']">属性名</th>
-                <th v-if="calcPropskey['type']">类型</th>
-                <th v-if="calcPropskey['default']">默认值</th>
-                <th v-if="calcPropskey['describe'] || calcPropskey['demo']">说明</th>
-            </tr>
-            <tr v-for="(param, index) in calcPropsData" :key="index">
-                <td v-if="calcPropskey['name']"><strong>{{param.name || ''}}</strong></td>
-                <td v-if="calcPropskey['type']" v-html="param.type || ''"></td>
-                <td v-if="calcPropskey['default']" v-html="param.default || '-'"></td>
-                <td v-if="calcPropskey['describe'] || calcPropskey['demo']">
-                    <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
-                    <pre>{{param.describe || ''}}</pre>
-                </td>
-            </tr>
-        </table>
+        <div class="props_table" v-if="type === 'table'">
+            <table class="mydoc_api_table">
+                <tr>
+                    <th>属性名</th>
+                    <th v-if="calcPropskey['type']">类型</th>
+                    <th v-if="calcPropskey['required']">必填</th>
+                    <th v-if="calcPropskey['default']">默认值</th>
+                    <th v-if="calcPropskey['describe'] || calcPropskey['demo']">说明</th>
+                </tr>
+                <tr v-for="(param, index) in calcPropsData" :key="index">
+                    <td><strong>{{param.name}}</strong></td>
+                    <td v-if="calcPropskey['type']" v-html="param.type || ''"></td>
+                    <td v-if="calcPropskey['required']">{{param.required ? '是' : '否'}}</td>
+                    <td v-if="calcPropskey['default']" v-html="param.default || '-'"></td>
+                    <td v-if="calcPropskey['describe'] || calcPropskey['demo']">
+                        <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
+                        <pre>{{param.describe || ''}}</pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <template v-else>
+            <template v-for="(param, index) in calcPropsData">
+                <H3 :key="'h3' + index">{{param.name}}</H3>
+                <Li :key="'type' + index" v-if="calcPropskey['type']">类型：<Strong><span v-html="param.type || ''"></span></Strong></Li>
+                <Li :key="'required' + index" v-if="calcPropskey['required']">必填：<Strong>{{param.required ? '是' : '否'}}</Strong></Li>
+                <Li :key="'default' + index" v-if="calcPropskey['default']">默认值：<Strong><span v-html="param.default || '-'"></span></Strong></Li>
+                <template v-if="calcPropskey['describe'] || calcPropskey['demo']">
+                    <Li :key="'li' + index">用法：</Li>
+                    <Code :key="'code' + index" :code="param.demo" v-if="calcPropskey['demo']"></Code>
+                    <P style="white-space: pre;" :key="'desc' + index">{{param.describe || ''}}</P>
+                </template>
+            </template>
+        </template>
     </div>
 </template>
 
@@ -38,6 +55,11 @@
                 type: Array,
                 required: true
             },
+            // 属性说明展现的形式，支持表格（table）和标题（h3）形式
+            type: {
+                type: String,
+                default: 'table',
+            }
         },
         computed: {
             calcPropsData(){
@@ -46,7 +68,7 @@
                         name: item.name,
                         type: highlight(item.type), 
                         default: highlight(item.default), 
-                        required: highlight(item.required), 
+                        required: item.required, 
                         describe: item.describe, 
                         demo: item.demo,
                     }
@@ -60,7 +82,6 @@
 
                     return map
                 } ,{
-                    name: false,
                     type: false, 
                     default: false, 
                     required: false, 
@@ -80,9 +101,12 @@
         line-height: 40px;
         text-align: left;
         margin-top: 20px;
+        box-sizing: border-box;
     }
-
-
+    .props_table{
+        overflow-x: auto;
+        border-top: 1px solid #eee ;
+    }
     .mydoc_api_describe {
         box-sizing : border-box ;
         position : relative ;
@@ -135,7 +159,7 @@
     .mydoc_api_table th{
         margin : 0px ;
         padding : 0px 15px 0px 6px ;
-        border: 1px solid #e9e9e9;
+        border: 1px solid #eee;
         vertical-align : baseline ;
         text-align : left ;
         width : 123px ;
@@ -150,7 +174,7 @@
         line-height: 1.5;
         margin : 0px ;
         padding : 3px 15px 3px 6px ;
-        border: 1px solid #e9e9e9;
+        border: 1px solid #eee;
         vertical-align : text-top ;
         word-break: break-all;
         font-size: 12px;

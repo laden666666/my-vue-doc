@@ -1,61 +1,55 @@
 
 <template>
-    <div class="example" :class="{'example-vertical': vertical}" :id="title">
-        <div ref="demo" class="example-demo" :style="{width: vertical ? '100%' : '50%'}">
+    <Row class="example" :class="{'example-vertical': vertical}" type="flex" justify="center" align="top">
+        <i-col class="example-demo" ref="demo" :xs="24" :sm="vertical ? 24 : 12">
             <div class="example-case">
                 <component :is="demo"></component>
             </div>
             <header class="example-header">
                 <span>
                     {{ title }}
-                    <a :href="`#${title}`">#</a>
+                    <a >#</a>
                 </span>
             </header>
             <div class="example-desc">
-                <slot name="desc"></slot>
+                <slot></slot>
             </div>
-        </div>
+        </i-col>
         <div class="example-split"></div>
-        <div ref="code" class="example-code" :style="codeHeight">
+        <i-col class="example-code" ref="code" :style="codeHeight" :xs="24" :sm="vertical ? 24 : 12">
             <div :style="style">
                 <Code lang="html" :code="vueSource"></Code>
             </div>
             <div class="example-code-more" v-if="showMore" @click="showCode = !showCode">
-                <button type="ios-arrow-down" v-show="!showCode"></button>
-                <button type="ios-arrow-up" v-show="showCode"></button>
-                <button v-show="hideCode && !showCode">
-                    <template v-if="lang === 'zh-CN'">显示代码</template>
-                    <template v-else>Show Code</template>
-                </button>
+                <Icon type="ios-arrow-down" v-show="!showCode"></Icon>
+                <Icon type="ios-arrow-up" v-show="showCode"></Icon>
             </div>
-        </div>
-    </div>
+        </i-col>
+    </Row>
 </template>
 <script>
     export default {
         name: 'Demo',
         props: {
-            //示例的标题
+            // 示例的标题
             title: {
                 type: String,
                 default: ''
             },
-            //是否垂直显示
+            // 是否垂直显示
             vertical: {
                 type: Boolean,
                 default: false
             },
-            //是否隐藏代码显示区域
-            hideCode: {
-                type: Boolean,
-                default: false
-            },
+            // 是一个Vue的ComponentOptions，用于生成例子
             demo: {
                 type: Object,
                 required: true,
             },
+            // 生成该示例的代码，用于展示给用户
             code: {
                 type: String,
+                default: ''
             },
         },
         data () {
@@ -75,36 +69,38 @@
                     if (this.showCode) {
                         style.height = `${this.code_height}px`;
                     } else {
-                        style.height = `${this.demo_height}px`;
+                        style.height = `${Math.min(this.demo_height, this.code_height)}px`;
                     }
                 }
-                style.width = this.vertical ? '100%' : '50%'
                 return style;
             },
             vueSource () {
-                let vueSource = decodeURI( window.atob(this.demo.__vueSource)) || ''
-                vueSource = vueSource.trim().replace('<template></template>')
-                return this.code || decodeURI( window.atob(this.demo.__vueSource)) 
+                if(this.code){
+                    return this.code
+                } else if(this.demo.__vueSource){
+                    let vueSource = decodeURI( window.atob(this.demo.__vueSource)) || ''
+                    vueSource = vueSource.trim().replace('<template></template>')
+                    return decodeURI( window.atob(this.demo.__vueSource)) 
+                } else {
+                    return ''
+                }
             },
             style () {
                 let style = {
                     opacity: 1
                 };
-                if (this.hideCode && !this.showCode) {
-                    style.opacity = 0;
-                }
                 return style;
             }
         },
         mounted () {
             this.$nextTick(() => {
-                const demo_height = this.$refs.demo.clientHeight;
-                const code_height = this.$refs.code.clientHeight + 20;
+                const demo_height = this.$refs.demo.$el.clientHeight;
+                const code_height = this.$refs.code.$el.clientHeight + 20;
                 this.code_height = code_height;
-                if ((code_height <= demo_height) && !this.hideCode) {
+                if (code_height <= demo_height) {
                     this.showMore = false;
                 }
-                this.demo_height = this.hideCode ? 30 : demo_height;
+                this.demo_height = demo_height;
                 this.ready = true;
             });
         }
@@ -141,6 +137,15 @@
             position: relative;
             left: 0;
         }
+        
+        @media screen and (max-width: 767px) {
+            &-split{
+                width: 100%;
+                float: left;
+                position: relative;
+                left: 0;
+            }
+        }
 
         &-demo{
             padding: 20px 0;
@@ -149,6 +154,8 @@
 
         &-case{
             padding: 0 20px;
+            overflow-x: auto;
+            width: 100%;
         }
 
         &-header{

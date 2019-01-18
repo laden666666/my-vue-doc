@@ -1,15 +1,13 @@
 <template>
-    <h1 class="h1" :id="text"><slot></slot></h1>
+    <h1 class="h1"><slot></slot></h1>
 </template>
 <script>
+import H from './H'
 export default {
-    computed: {
-        text(){
-            let $slots = this.$slots
-            if($slots.default && $slots.default[0]){
-                return $slots.default[0].text
-            }
-            return ''
+    extends: H,
+    data(){
+        return {
+            level: 1
         }
     }
 }

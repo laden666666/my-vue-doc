@@ -1,5 +1,5 @@
 <template>
-    <Instructions :data="calcPropsData">
+    <Instructions :data="calcPropsData" :type="type">
     </Instructions>
 </template>
 
@@ -21,7 +21,7 @@
                             let hasSpace = comments[0][2] === ' '
                             return comments.map(comment=>comment.substr(hasSpace ? 3 : 2, comment.length)).join('\n')
                         }
-                        return []
+                        comments = []
                     }else {
                         comments = []
                     }
@@ -42,6 +42,11 @@
                 type: String,
                 default: ''
             },
+            // 属性说明展现的形式，支持表格（table）和标题（h3）形式
+            type: {
+                type: String,
+                default: 'table',
+            }
         },
         computed: {
             calcPropsData(){
@@ -77,6 +82,7 @@
                             name,
                             default: JSON.stringify(json[name].default),
                             type: type,
+                            required: json[name].required || false,
                             describe: _getComment(name),
                         }
                     })

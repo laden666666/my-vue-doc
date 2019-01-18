@@ -9,14 +9,17 @@ import MyDialog from 'my-vue-dialog';
 import 'my-vue-dialog/dist/my-vue-dialog.css';
 Vue.use(MyDialog)
 
-import {Icon, Button, Tooltip, Modal} from 'iview';
+import {Icon, Button, Tooltip, Row, Col} from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Icon', Icon)
 Vue.component('Button', Button)
 Vue.component('Tooltip', Tooltip)
-Vue.component('Modal', Modal)
+Vue.component('Row', Row)
+Vue.component('ICol', Col)
 
 Vue.config.productionTip = false
+
+history.scrollRestoration = 'manual'
 
 ;(function() {
     var lastTime = 0;
@@ -44,6 +47,8 @@ Vue.config.productionTip = false
         };
     }
 }());
+
+window.router = router
 
 /* eslint-disable no-new */
 window.app = new Vue({

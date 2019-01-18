@@ -15,6 +15,7 @@ import H3 from './H3'
 import P from './P'
 import A from './A'
 import Strong from './Strong'
+import Li from './Li'
 
 Vue.component('Home', Home)
 Vue.component('Background', Background)
@@ -32,3 +33,4 @@ Vue.component('H3', H3)
 Vue.component('P', P)
 Vue.component('A', A)
 Vue.component('Strong', Strong)
+Vue.component('Li', Li)

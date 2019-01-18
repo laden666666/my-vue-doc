@@ -25,6 +25,7 @@
     "highlightjs": "^9.12.0",
     "hljs": "^6.2.3",
     "intro.js": "^2.9.3",
+    "lodash.debounce": "^4.0.8",
     "my-doc-jsx": "^0.4.2",
     "my-doc-jsx-plugin-api": "^0.1.1",
     "my-vue-dialog": "0.0.1",
