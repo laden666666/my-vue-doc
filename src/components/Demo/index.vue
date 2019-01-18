@@ -108,9 +108,12 @@
 </script>
 
 <style lang="less" scoped>
+    
+    @import '../../theme.less';
+
     .example{
         margin-top: 20px;
-        border: 1px solid #eee;
+        border: 1px solid @border-color;
         border-radius: 6px;
         margin-bottom: 20px;
         position: relative;
@@ -129,7 +132,7 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            border: 1px dashed #eee;
+            border: 1px dashed @border-color;
         }
         &-vertical &-split{
             width: 100%;
@@ -138,7 +141,7 @@
             left: 0;
         }
         
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: @phone-width) {
             &-split{
                 width: 100%;
                 float: left;
@@ -247,7 +250,7 @@
                 &:hover{
                     /*background: #fff;*/
                     i{
-                        color: #5cb85c;
+                        color: @main-color;
                     }
                 }
             }

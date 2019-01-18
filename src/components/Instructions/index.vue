@@ -94,8 +94,8 @@
 
 </script>
 
-
-<style scoped>
+<style lang="less" scoped>
+    @import '../../theme.less';
     .props {
         width: 100%;
         line-height: 40px;
@@ -133,7 +133,7 @@
     .mydoc_api_table{
         margin : 15px 0px 0px ;
         padding : 0px ;
-        border : 1px solid rgb(170, 170, 170) ;
+        border : 1px solid @border-color ;
         border-collapse : collapse ;
         width : 100% ;
         color : rgb(0, 0, 0) ;
@@ -159,14 +159,14 @@
     .mydoc_api_table th{
         margin : 0px ;
         padding : 0px 15px 0px 6px ;
-        border: 1px solid #eee;
+        border: 1px solid @border-color;
         vertical-align : baseline ;
         text-align : left ;
         width : 123px ;
         word-break: break-all;
         background: #f7f7f7;
         white-space: nowrap;
-        color: #5c6b77;
+        color: @main-color;
         font-weight: 600;
     }
 
@@ -178,7 +178,7 @@
         vertical-align : text-top ;
         word-break: break-all;
         font-size: 12px;
-        color: #495060;
+        color: @font-color;
     }
 
 </style>

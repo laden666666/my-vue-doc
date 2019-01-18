@@ -11,10 +11,11 @@ export default {
     }
 }
 </script>
+<style lang="less" scoped>
+@import '../../theme.less';
 
-<style scoped>
 .a{
-    color: #42b983;
+    color: @main-color;
     font-weight: 500;
     word-spacing: .05rem;
     text-decoration: underline;

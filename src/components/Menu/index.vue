@@ -128,7 +128,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="less" scoped>
+    @import '../../theme.less';
     .menu{
         height: 100vh;
         width: 100%;    
@@ -148,6 +149,7 @@ export default {
         z-index: 3;
         transition: all .3s;
         background-color: rgba(255, 255, 255, .9);
+        padding-top: 20px;
     }
     .menu-aside.fixed{
         position: fixed;
@@ -198,7 +200,7 @@ export default {
         left: 0;   
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: @phone-width) {
         .menu-content{
             width: 100%; 
             left: 0;   

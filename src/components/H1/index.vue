@@ -13,11 +13,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../../theme.less';
 .h1{
     font-size: 2rem;
     margin: 3rem 0 1rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: @font-color;
 }
 </style>

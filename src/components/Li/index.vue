@@ -1,7 +1,8 @@
 <template>
     <li class="li"><slot></slot></li>
 </template>
-<style scoped>
+<style lang="less" scoped>
+@import '../../theme.less';
 .li{
     line-height: 1.6em;
     margin: 1.2em 0 -1.2em;
@@ -9,7 +10,7 @@
     position: relative;
     z-index: 1;
     font-size: 14px;
-    color: #34495e;
+    color: @font-color;
     list-style: none;
 }
 .li::before{
@@ -19,7 +20,7 @@
     height: 8px;
     margin: 0 10px 0 10px;
     border-radius: 20px;
-    background-color: #34495e;
+    background-color: @font-color;
     vertical-align: middle;
 }
 </style>

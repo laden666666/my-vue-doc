@@ -98,7 +98,8 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
+@import '../../theme.less';
 .home{
     height: 100vh;
     margin: 0 16px;
@@ -121,7 +122,7 @@ export default {
 
 }
 .home-name{
-    color: #34495e;
+    color: darken(@font-color, 10%);
     font-size: 2.2rem;
     font-weight: 300;
     margin: .625rem 0 2.5rem;
@@ -151,7 +152,9 @@ export default {
     max-width: 500px;
     padding: 0;
     font-size: 14px;
-    color: #34495e;
+    color:  @font-color;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 .home-buttons{
     -webkit-font-smoothing : antialiased ;
@@ -170,8 +173,8 @@ export default {
     text-size-adjust : none ;
     box-sizing : border-box ;
     text-decoration-line : none ;
-    border : 1px solid #42b983;
-    color: #42b983;
+    border : 1px solid @main-color;
+    color: @main-color;
     border-radius : 2rem ;
     display : inline-block ;
     font-size : 1.05rem ;
@@ -184,18 +187,18 @@ export default {
     outline: none;
 }
 .home-button:hover{
-    background-color: #42b983;
-    border : 1px solid #42b983;
+    background-color: @main-color;
+    border : 1px solid @main-color;
     color: #fff;
 }
 .home-button.home-button_primary{
-    background-color: #42b983;
-    border : 1px solid #42b983;
+    background-color: @main-color;
+    border : 1px solid @main-color;
     color: #fff;
 }
 .home-button.home-button_primary:hover{
     background-color: transparent;
-    border : 1px solid #42b983;
-    color: #42b983;
+    border : 1px solid @main-color;
+    color: @main-color;
 }
 </style>

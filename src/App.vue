@@ -3,12 +3,12 @@
         @touchstart="onTouchstart" 
         @touchmove="onTouchmove" 
         @touchend="onTouchend">
-        <Background>
+        <Background :type="app.background">
             <span id="home"></span>
             <Home 
                 v-bind="app"
             ></Home>
-            <Menu :menu="menu">
+            <Menu :menu="app.menu">
                 <span id="menu"></span>
                 <router-view/>
             </Menu>
@@ -40,31 +40,6 @@ export default {
         return {
             isScrolling: false,
             app,
-            menu: [{
-                title: '文档控件',
-                children: [{
-                    title: '主页',
-                    path: '#/',
-                }, {
-                    title: '基础文档控件',
-                    path: '#/Base',
-                }, {
-                    title: '进阶文档控件',
-                    children: [{
-                        title: '源代码展示控件',
-                        path: '#/Advances/Code',
-                    }, {
-                        title: '属性说明书',
-                        path: '#/Advances/Instructions',
-                    }, {
-                        title: 'Vue的props说明书',
-                        path: '#/Advances/Props',
-                    }, {
-                        title: 'Vue的Demo展示',
-                        path: '#/Advances/Demo',
-                    }]
-                }]
-            },]
         }
     },
     methods: {

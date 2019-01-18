@@ -57,7 +57,8 @@ export default {
     }
 }
 </script>
-<style lang="css" scoped>
+<style lang="less" scoped>
+    @import '../../theme.less';
     .menu-nav_list{
         list-style: none;
         margin: 0 0 0 15px;
@@ -67,7 +68,7 @@ export default {
         margin: 6px 0;
     }
     .menu-nav_item a{
-        color: #505d6b;
+        color: @font-color;
         font-size: 14px;
         font-weight: 400;
         overflow: hidden;
@@ -79,7 +80,7 @@ export default {
         list-style: none;
     }
     p.menu-nav_link{
-        color: #364149;
+        color: @font-color;
         font-size: 14px;
         font-weight: 700;
         overflow: hidden;
@@ -89,9 +90,10 @@ export default {
         border-bottom: none;
         display: block;
         list-style: none;
+        line-height: 2;
     }
     a.menu-nav_link{
-        color: #505d6b;
+        color: @font-color;
         font-size: 14px;
         font-weight: 400;
         overflow: hidden;
@@ -101,21 +103,27 @@ export default {
         border-bottom: none;
         display: block;
         list-style: none;
+        line-height: 1.8;
     }
     a.menu-nav_link:hover{
         text-decoration: underline;
     }
     a.menu-nav_link.active{
-        color: #42b983;
+        color: @main-color;
     }
     a.menu-nav_title_link{
         font-size-adjust: none;
         text-size-adjust: none;
         font-size: 12px;
         display: block;
+        line-height: 1.8;
+    }
+    .menu-nav_title_link:hover{
+        color: @main-color;
+        text-decoration: underline;
     }
     .menu-nav_title_link.active{
-        color: #42b983;
+        color: @main-color;
     }
     .menu-nav_title_link.level2{
         padding-left: 10px;

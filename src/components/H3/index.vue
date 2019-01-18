@@ -13,13 +13,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../../theme.less';
 .h3{
     margin: 52px 0 1.2em;
     line-height: 1.2;
     position: relative;
     font-weight: 600;
-    color: #2c3e50;
+    color: @font-color;
     position: relative;
 }
 .h3-anchor{
