@@ -57,21 +57,9 @@
 
 </template>
 <script>
-    import hljs from 'highlightjs/highlight.pack.js';
-    import 'highlightjs/styles/atom-one-light.css';
     import Clipboard from 'clipboard';
     import ShowScale from './ShowScale';
-
-    function replaceTag(source, tagMap) {
-        Object.keys(tagMap).forEach(i => {
-            source = source
-                .replace(new RegExp(`<${i}\(\\W+\)`, 'g'), `<${tagMap[i]}$1`)
-                .replace(new RegExp(`<\/${i}>`, 'g'), `<\/${tagMap[i]}>`);
-        });
-        return source;
-    }
-
-    let div = document.createElement('div')
+    import highlight from './highlight';
 
     export default {
         props: {
@@ -108,9 +96,7 @@
                 }
             },
             showCode(){
-                div.textContent = this.code;
-                hljs.highlightBlock(div);
-                return div.innerHTML
+                return highlight(this.code, this.language)
             },
         },
         mounted () {

@@ -14,19 +14,9 @@
     </Doc>
 </template>
 <script>
-import Doc from '../demo/Home/Doc'
-import Title from '../demo/Home/Title'
-import P from '../demo/Home/P'
-import A from '../demo/Home/A'
-import Strong from '../demo/Home/Strong'
 export default {
     data(){
         return {
-            Doc,
-            Title,
-            P,
-            A,
-            Strong,
         }
     }
 }

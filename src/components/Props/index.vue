@@ -1,20 +1,10 @@
 <template>
-    <div class="props">
-        <table class="mydoc_api_table">
-            <tr>
-                <th>props名</th><th>props类型</th><th>默认值</th><th>参数说明</th>
-            </tr>
-            <tr v-for="(param, index) in calcPropsData" :key="index">
-                <td>{{param.name || ''}}</td>
-                <td>{{param.type || ''}}</td>
-                <td>{{param.default || ''}}</td>
-                <td><pre>{{param.describe || ''}}</pre></td>
-            </tr>
-        </table>
-    </div>
+    <Instructions :data="calcPropsData">
+    </Instructions>
 </template>
 
 <script>
+
     //正则获取注释
     function getComment(jsonStr){
         var codes = jsonStr.split('\n').map(code=>code.trim()).map(code=>code.indexOf('//') == 0 ? code : code.replace(/\s*/, ''))
@@ -27,7 +17,11 @@
                     comments.push(code)
                 } else {
                     if(code.indexOf(`${name}:`) == 0 || code.indexOf(`'${name}':`) == 0 || code.indexOf(`"${name}":`) == 0){
-                        return comments.map(comment=>comment.substr(2, comment.length)).join('\n')
+                        if(comments[0]){
+                            let hasSpace = comments[0][2] === ' '
+                            return comments.map(comment=>comment.substr(hasSpace ? 3 : 2, comment.length)).join('\n')
+                        }
+                        return []
                     }else {
                         comments = []
                     }
@@ -52,6 +46,9 @@
         computed: {
             calcPropsData(){
                 try{
+
+                    let _getComment = getComment(this.data)
+
                     //将json字符串转为json
                     var functionStr = this.data.trim()
                     // console.log(functionStr)
@@ -80,7 +77,7 @@
                             name,
                             default: JSON.stringify(json[name].default),
                             type: type,
-                            describe: getComment(name),
+                            describe: _getComment(name),
                         }
                     })
                 } catch(e) {

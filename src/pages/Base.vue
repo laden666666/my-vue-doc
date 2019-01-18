@@ -6,35 +6,35 @@
         <H2>文档根标签</H2>
         <P>使用<Strong>Doc标签</Strong>定义文档的根标签。</P>
 
-        <Demo title="Doc示例" :demo="Doc">
+        <Demo title="文档根标签" :demo="Doc">
             <div slot="desc">使用Doc定义文档根标签</div>
         </Demo>
 
         <H2>文档标题</H2>
         <P>使用<Strong>H1、H2、H3标签</Strong>定义文档标签。</P>
 
-        <Demo title="文档标题示例" :demo="Title">
+        <Demo title="文档标题" :demo="Title">
             <div slot="desc">使用H1、H2、H3定义文档标签。</div>
         </Demo>
 
         <H2>文档段落</H2>
         <P>使用<Strong>P标签</Strong>定义文档段落。</P>
 
-        <Demo title="文档段落示例" :demo="P">
+        <Demo title="文档段落" :demo="P">
             <div slot="desc">使用P标签定义文档段落。</div>
         </Demo>
 
         <H2>超链接</H2>
         <P>使用<Strong>A标签</Strong>定义超链接，支持href属性。超链接中，如果href是非“http”、“https”、“//”开头的，表示是站内链接，会跳转到该链接处；如果是表示非站内链接，会再打开一个浏览器tab跳转的链接页面。</P>
 
-        <Demo title="文档段落示例" :demo="A">
+        <Demo title="超链接" :demo="A">
             <div slot="desc">使用A标签定义超链接。</div>
         </Demo>
 
         <H2>强调</H2>
         <P>使用<Strong>Strong标签</Strong>定义强调的语句。</P>
 
-        <Demo title="文档段落示例" :demo="Strong">
+        <Demo title="强调" :demo="Strong">
             <div slot="desc">使用Strong标签定义强调的语句。</div>
         </Demo>
     </Doc>

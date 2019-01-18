@@ -14,13 +14,12 @@
 </style>
 <template>
     <div class="code-scale-modal">
-        <pre :class="{bg: bg}"><code :class="language" ref="code2"></code></pre>
+        <pre :class="{bg: bg}"><code :class="language" v-html="showCode"></code></pre>
     </div>
 
 </template>
 <script>
-    import hljs from 'highlightjs/highlight.pack.js';
-    import 'highlightjs/styles/atom-one-light.css';
+    import highlight from './highlight';
 
     export default {
         props: {
@@ -49,11 +48,10 @@
                 } else {
                     return this.lang;
                 }
-            }
-        },
-        mounted () {
-            this.$refs.code2.textContent = this.code;
-            hljs.highlightBlock(this.$refs.code2);
+            },
+            showCode(){
+                return highlight(this.code, this.language)
+            },
         },
     }
 </script>
