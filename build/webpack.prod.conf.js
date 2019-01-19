@@ -119,7 +119,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
     new PrerenderSpaPlugin(
       // 编译后的html需要存放的路径
-      path.join(__dirname, '../dist'),
+      path.join(__dirname, '../docs'),
       // 列出哪些路由需要预渲染
       [ '/' ]
     )
