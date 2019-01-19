@@ -2,6 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const app = require('../src/app.json')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -27,6 +28,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'background': path.join(__dirname, '../src/components/Background/strategy/', app.background + '.vue')
     }
   },
   resolveLoader: {

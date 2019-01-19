@@ -29,6 +29,7 @@
     "my-doc-jsx": "^0.4.2",
     "my-doc-jsx-plugin-api": "^0.1.1",
     "my-vue-dialog": "0.0.1",
+    "prerender-spa-plugin": "^3.4.0",
     "prismjs": "^1.15.0",
     "qs": "^6.6.0",
     "vue": "^2.5.2",

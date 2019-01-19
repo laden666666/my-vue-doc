@@ -1,5 +1,5 @@
 <template>
-    <div @mousewheel="onMouseWheel" 
+    <div id="app" @mousewheel="onMouseWheel" 
         @touchstart="onTouchstart" 
         @touchmove="onTouchmove" 
         @touchend="onTouchend">
@@ -16,7 +16,7 @@
     </div>
 </template>
 <script>
-import app from './app.js'
+import app from './app.json'
 
 var isFirefox = navigator.userAgent.indexOf("Firefox") != -1;
 
@@ -158,12 +158,5 @@ html, body{
 }
 *:hover::-webkit-scrollbar-track{
     background:hsla(0,0%,53%,.1)
-}
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
 }
 </style>

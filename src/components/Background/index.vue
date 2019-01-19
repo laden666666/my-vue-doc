@@ -6,25 +6,27 @@
 </template>
 <script>
 
+import background from 'background'
+
 export default {
-    props: {
-        type: {
-            type: String,
-            default: 'BackgroundColor'
-        }
-    },
+    // props: {
+    //     type: {
+    //         type: String,
+    //         default: 'BackgroundColor'
+    //     }
+    // },
     name: 'Background',
     data(){
-        let component;
-        switch (this.type) {
-            case 'BackgroundColor':
-                component = ()=>import('./strategy/BackgroundColor.vue')
-                break;
-            default:
-                break;
-        }
+        // let component;
+        // switch (this.type) {
+        //     case 'BackgroundColor':
+        //         component = ()=>import('./strategy/BackgroundColor.vue')
+        //         break;
+        //     default:
+        //         break;
+        // }
         return {
-            component
+            component: background
         }
     }
 }

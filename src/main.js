@@ -56,5 +56,8 @@ window.app = new Vue({
     router,
     components: { App },
     template: '<App/>',
-    myDialog: {key: 'my-vue-doc'}
+    myDialog: {key: 'my-vue-doc'},
+    mounted () {
+      document.dispatchEvent(new Event('render-event'))
+    }
 })
