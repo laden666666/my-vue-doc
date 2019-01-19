@@ -18,7 +18,7 @@ npm install
 执行：
 
 ```javascript
-npm install dev
+npm run dev
 ```
 
 然后在/src/pages目录中编辑文档即可。
@@ -30,7 +30,7 @@ npm install dev
 执行：
 
 ```javascript
-npm install build
+npm run build
 ```
 
 然后将docs目录拷贝到github的对应项目中的docs目录即可。
