@@ -1,6 +1,6 @@
 <doc>
     <title>文档框架 —— my-vue-doc</title>
-    <p>这是一个用于创建<span>my系列控件</span>文档的框架，样式参考<a href="https://docsify.js.org">docsify</a>，框架基于<a href="https://www.iviewui.com">iview</a>。目前不对外开放，仅针对<span>my系列控件</span>定制化使用。</p>
+    <p>这是一个用于创建<span>my系列控件</span>文档的框架，样式参考<span>docsify</span>，框架基于<span>iview</span>。目前不对外开放，仅针对<span>my系列控件</span>定制化使用。</p>
 
     <h2>使用</h2>
     <p>下载整个工程，然后执行：</p>

@@ -1,5 +1,5 @@
 <h2 align="center">文档框架 —— my-vue-doc</h2>
-这是一个用于创建my系列控件文档的框架，样式参考[docsify](https://docsify.js.org "") ，框架基于[iview](https://www.iviewui.com "") 。目前不对外开放，仅针对my系列控件定制化使用。
+这是一个用于创建my系列控件文档的框架，样式参考docsify，框架基于iview。目前不对外开放，仅针对my系列控件定制化使用。
 
 
 ## 使用
