@@ -1,5 +1,5 @@
 <template>
-    <h2 class="h2"><a :name="text" class="h2-anchor"></a><slot></slot></h2>
+    <h2 class="h2"><a :v-if="isDocTitle" :name="text" class="h2-anchor"></a><slot></slot></h2>
 </template>
 <script>
 import H from '../H1/H'

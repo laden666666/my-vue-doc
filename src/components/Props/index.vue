@@ -1,5 +1,6 @@
 <template>
     <Instructions :data="calcPropsData" :type="type">
+        <slot :name="name" v-for="name in $slots"></slot>
     </Instructions>
 </template>
 

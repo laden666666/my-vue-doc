@@ -7,16 +7,17 @@
                     <th v-if="calcPropskey['type']">类型</th>
                     <th v-if="calcPropskey['required']">必填</th>
                     <th v-if="calcPropskey['default']">默认值</th>
-                    <th v-if="calcPropskey['describe'] || calcPropskey['demo']">说明</th>
+                    <th>说明</th>
                 </tr>
                 <tr v-for="(param, index) in calcPropsData" :key="index">
                     <td><strong>{{param.name}}</strong></td>
                     <td v-if="calcPropskey['type']" v-html="param.type || ''"></td>
                     <td v-if="calcPropskey['required']">{{param.required ? '是' : '否'}}</td>
                     <td v-if="calcPropskey['default']" v-html="param.default || '-'"></td>
-                    <td v-if="calcPropskey['describe'] || calcPropskey['demo']">
+                    <td>
                         <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
                         <pre>{{param.describe || ''}}</pre>
+                        <slot :name="param.name"></slot>
                     </td>
                 </tr>
             </table>
@@ -27,11 +28,12 @@
                 <Li :key="'type' + index" v-if="calcPropskey['type']">类型：<Strong><span v-html="param.type || ''"></span></Strong></Li>
                 <Li :key="'required' + index" v-if="calcPropskey['required']">必填：<Strong>{{param.required ? '是' : '否'}}</Strong></Li>
                 <Li :key="'default' + index" v-if="calcPropskey['default']">默认值：<Strong><span v-html="param.default || '-'"></span></Strong></Li>
-                <template v-if="calcPropskey['describe'] || calcPropskey['demo']">
-                    <Li :key="'li' + index">用法：</Li>
-                    <Code :key="'code' + index" :code="param.demo" v-if="calcPropskey['demo']"></Code>
-                    <P style="white-space: pre;" :key="'desc' + index">{{param.describe || ''}}</P>
-                </template>
+                <Li :key="'li' + index">用法：</Li>
+                <div style="padding-left: 10px;" :key="'div' + index">
+                    <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
+                    <P style="white-space: pre;" :key="i" v-for="(txt, i) in param.describe.split('\n')">{{txt || '\n'}}</P>
+                    <slot :name="param.name"></slot>
+                </div>
             </template>
         </template>
     </div>
@@ -51,6 +53,7 @@
             //     describe: '说明', 
             //     demo: '示例代码'
             // },]
+            // 其中name和describe是必须设置项
             data: {
                 type: Array,
                 required: true

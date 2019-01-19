@@ -7,6 +7,7 @@
         padding: 3px 5px;
         border-radius: 5px;
         height: 100%;
+        line-height: 1.6;
     }
     .code-scale-modal pre{
         font-size: 14px;
@@ -16,7 +17,6 @@
     <div class="code-scale-modal">
         <pre :class="{bg: bg}"><code :class="language" v-html="showCode"></code></pre>
     </div>
-
 </template>
 <script>
     import highlight from './highlight';

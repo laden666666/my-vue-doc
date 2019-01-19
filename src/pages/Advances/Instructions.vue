@@ -23,6 +23,7 @@
             //     describe: '说明', 
             //     demo: '示例代码'
             // },]
+            // 其中name和describe是必须设置项
             data: {
                 type: Array,
                 required: true
@@ -33,16 +34,25 @@
                 default: 'table',
             }
         }`"></Props>
+
+        <H2>Slots</H2>
+        <P><Strong>Instructions</Strong>控件会根据data属性中的name配置动态生成slot，如下例：</P>
+        <Demo :demo="InstructionsSlot" title="slot">
+            <div >根据data属性中的name配置动态生成slot</div>
+        </Demo>
+
     </Doc>
 </template>
 <script>
 import Instructions from "../../demo/Advanced/Instructions/Instructions";
 import InstructionsH3 from "../../demo/Advanced/Instructions/InstructionsH3";
+import InstructionsSlot from "../../demo/Advanced/Instructions/InstructionsSlot";
 export default {
     data(){
         return {
             Instructions,
             InstructionsH3,
+            InstructionsSlot,
         }
     }
 }

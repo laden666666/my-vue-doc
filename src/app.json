@@ -22,6 +22,10 @@
             "path": "#/"
         },
         {
+            "title": "app配置",
+            "path": "#/AppConfig"
+        },
+        {
             "title": "基础文档控件",
             "path": "#/Base"
         },
@@ -43,6 +47,14 @@
                 {
                     "title": "Vue的Demo展示",
                     "path": "#/Advances/Demo"
+                },
+                {
+                    "title": "函数的说明书",
+                    "path": "#/Advances/Function"
+                },
+                {
+                    "title": "时间轴",
+                    "path": "#/Advances/TimeLine"
                 }
             ]
         }

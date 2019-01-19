@@ -18,7 +18,7 @@
         <div class="example-split"></div>
         <i-col class="example-code" ref="code" :style="codeHeight" :xs="24" :sm="vertical ? 24 : 12">
             <div :style="style">
-                <Code lang="html" :code="vueSource"></Code>
+                <Code :lang="lang" :code="vueSource"></Code>
             </div>
             <div class="example-code-more" v-if="showMore" @click="showCode = !showCode">
                 <Icon type="ios-arrow-down" v-show="!showCode"></Icon>
@@ -51,6 +51,11 @@
                 type: String,
                 default: ''
             },
+            // 展示代码的语言
+            lang: {
+                type: String,
+                default: 'html'
+            },
         },
         data () {
             return {
@@ -59,7 +64,6 @@
                 demo_height: 0,
                 code_height: 0,
                 ready: false,
-                lang: this.$lang
             }
         },
         computed: {

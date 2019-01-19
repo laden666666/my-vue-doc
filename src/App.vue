@@ -3,16 +3,20 @@
         @touchstart="onTouchstart" 
         @touchmove="onTouchmove" 
         @touchend="onTouchend">
-        <Background :type="app.background">
+        <Background :type="app.background" v-if="isHome">
             <span id="home"></span>
             <Home 
                 v-bind="app"
             ></Home>
-            <Menu :menu="app.menu">
+            <Menu :menu="app.menu" key="1">
                 <span id="menu"></span>
                 <router-view/>
             </Menu>
         </Background>
+        <Menu :menu="app.menu" key="2" v-else>
+            <span id="menu"></span>
+            <router-view/>
+        </Menu>
     </div>
 </template>
 <script>
@@ -42,8 +46,16 @@ export default {
             app,
         }
     },
+    computed: {
+        isHome(){
+            return this.$route.path === '/'
+        }
+    },
     methods: {
         onMouseWheel(event){
+            if(!this.isHome){
+                return
+            }
             if(this.isScrolling){
                 event.preventDefault()
                 event.stopPropagation()
@@ -96,10 +108,16 @@ export default {
             cb()
         },
         onTouchstart(event){
+            if(!this.isHome){
+                return
+            }
             this._pageX = event.touches[0].pageX
             this._pageY = event.touches[0].pageY
         },
         onTouchmove(event){
+            if(!this.isHome){
+                return
+            }
             if(this.isScrolling){
                 event.preventDefault()
                 event.stopPropagation()
@@ -122,6 +140,9 @@ export default {
             }
         },
         onTouchend(event){
+            if(!this.isHome){
+                return
+            }
             this._pageX = undefined
             this._pageY = undefined
         }

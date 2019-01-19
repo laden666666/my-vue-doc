@@ -27,9 +27,15 @@ export default {
             return ''
         },
     },
+    data: ()=>{
+        return {
+            isDocTitle: false
+        }
+    },
     created(){
         let doc = getDoc(this)
         if( doc ){
+            this.isDocTitle = true
             this.setTitle(this.level, this.text)
         }
     }

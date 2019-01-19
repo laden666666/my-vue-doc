@@ -6,6 +6,8 @@ import Demo from './Demo'
 import Code from './Code'
 import Props from './Props'
 import Instructions from './Instructions'
+import MyFunction from './Function'
+import TimeLine from './TimeLine/'
 
 // 文档相关
 import Doc from './Doc'
@@ -24,6 +26,8 @@ Vue.component('Demo', Demo)
 Vue.component('Code', Code)
 Vue.component('Props', Props)
 Vue.component('Instructions', Instructions)
+Vue.component('Function', MyFunction)
+Vue.component('TimeLine', TimeLine)
 
 // 文档相关
 Vue.component('Doc', Doc)

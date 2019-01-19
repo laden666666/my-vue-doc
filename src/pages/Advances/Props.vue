@@ -1,7 +1,7 @@
 <template>
     <Doc>
         <H1>Vue的props说明书——Props</H1>
-        <P>使用<Strong>Props</Strong>控件做一个Vue组件Props的说明书，Props特点是它是基于Vue的源码生成说明书，如果不采用Vue的源码，可以使用Instructions代替。</P>
+        <P>使用<Strong>Props</Strong>控件做一个Vue组件Props的说明书，Props特点是它是基于Vue的源码生成说明书，如果不希望采用Vue的源码方式生成说明书，可以使用Instructions代替。</P>
         <Demo :demo="Props" title="Vue的props说明书" :vertical="true">
             <div >Vue的props说明书。</div>
         </Demo>
@@ -33,6 +33,9 @@
                 default: 'table',
             }
         }`"></Props>
+
+        <H2>Slots</H2>
+        <P>与<Strong>Instructions</Strong>控件类似，<Strong>Props</Strong>会根据data属性中的name配置动态生成slot，slot名字和vue控件prop的名字相同</P>
 
     </Doc>
 </template>

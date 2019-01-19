@@ -3,6 +3,7 @@
         background-color: #fafafa;
         border-radius: 5px;
         margin: 10px 0;
+        line-height: 1.6;
     }
     .code pre{
         padding: 10px 15px;

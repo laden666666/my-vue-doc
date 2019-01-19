@@ -9,13 +9,15 @@ import MyDialog from 'my-vue-dialog';
 import 'my-vue-dialog/dist/my-vue-dialog.css';
 Vue.use(MyDialog)
 
-import {Icon, Button, Tooltip, Row, Col} from 'iview';
+import {Icon, Button, Tooltip, Row, Col, Timeline, TimelineItem} from 'iview';
 import 'iview/dist/styles/iview.css';
 Vue.component('Icon', Icon)
 Vue.component('Button', Button)
 Vue.component('Tooltip', Tooltip)
 Vue.component('Row', Row)
 Vue.component('ICol', Col)
+Vue.component('ITimeline', Timeline)
+Vue.component('ITimelineItem', TimelineItem)
 
 Vue.config.productionTip = false
 

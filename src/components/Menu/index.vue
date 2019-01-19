@@ -41,7 +41,7 @@ export default {
         menu: {
             type: Array,
             isRequired: true
-        }
+        },
     },
     provide(){
         return {
@@ -70,7 +70,7 @@ export default {
         },
     },
     mounted(){
-
+        let top = this.$el.getBoundingClientRect().top
         let handleHash = debounce(()=>{
             if(!cacheTitleDom){
                 cacheTitleDom = []
@@ -84,7 +84,7 @@ export default {
                 })
             }
 
-            if(!cacheTitleDom.length || window.scrollY <= window.innerHeight){
+            if(!cacheTitleDom.length || window.scrollY <= top){
                 this.$router.replace(this.$router.history.current.path)
             } else {
                 for(let title of cacheTitleDom){
@@ -96,7 +96,7 @@ export default {
             }
         }, 500, {maxWait: 500})
 
-        window.addEventListener('scroll', ()=> {
+        let scrollHandle = ()=> {
             let rect = this.$el.getBoundingClientRect()
             if(rect.top <= 0){
                 this.fixed = true
@@ -105,9 +105,16 @@ export default {
             }
 
             handleHash()
-        }, {
+        }
+        window.addEventListener('scroll', scrollHandle, {
             passive: true
         })
+        this.$once('hook:beforeDestroy', function () {
+            window.removeEventListener('scroll', scrollHandle, {
+                passive: true
+            })
+        })
+
         if(this.$route.hash){
             try{
                 let title = document.querySelector(`[name='${this.$route.hash.substr(1)}']`)
@@ -159,7 +166,17 @@ export default {
         overflow-y: visible;
     }
     .menu-aside::-webkit-scrollbar-thumb{
+        border-radius:4px;
         background:transparent;
+    }
+    .menu-aside:hover::-webkit-scrollbar-thumb{
+        background:hsla(0,0%,53%,.4)
+    }
+    .menu-aside::-webkit-scrollbar-track{
+        background:transparent;
+    }
+    .menu-aside:hover::-webkit-scrollbar-track{
+        background:hsla(0,0%,53%,.1)
     }
     .menu-toggle{
         box-sizing: border-box;

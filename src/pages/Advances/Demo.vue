@@ -34,6 +34,11 @@
                 type: String,
                 default: ''
             },
+            // 展示代码的语言
+            lang: {
+                type: String,
+                default: 'html'
+            },
         }`"></Props>
 
         <H2>Slot</H2>

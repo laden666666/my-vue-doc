@@ -1,5 +1,5 @@
 <template>
-    <h3 class="h3"><a :name="text" class="h3-anchor"></a><slot></slot></h3>
+    <h3 class="h3"><a :v-if="isDocTitle" :name="text" class="h3-anchor"></a><slot></slot></h3>
 </template>
 <script>
 import H from '../H1/H'
@@ -16,7 +16,7 @@ export default {
 <style lang="less" scoped>
 @import '../../theme.less';
 .h3{
-    margin: 52px 0 1.2em;
+    margin: 32px 0 1.2em;
     line-height: 1.2;
     position: relative;
     font-weight: 600;

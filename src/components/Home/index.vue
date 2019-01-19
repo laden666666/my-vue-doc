@@ -92,7 +92,7 @@ export default {
                 }
                 
             } else{
-                this.$route.push(routePath)
+                this.$router.push(routePath)
             }
         }
     }
