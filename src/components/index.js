@@ -23,6 +23,7 @@ import Table from './Table'
 import Tr from './Tr'
 import Td from './Td'
 import Th from './Th'
+import Alert from './Alert'
 
 Vue.component('Home', Home)
 Vue.component('Background', Background)
@@ -48,3 +49,4 @@ Vue.component('A', A)
 Vue.component('Img', Img)
 Vue.component('Strong', Strong)
 Vue.component('Li', Li)
+Vue.component('Alert', Alert)

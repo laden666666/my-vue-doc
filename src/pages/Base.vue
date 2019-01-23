@@ -44,6 +44,27 @@
         <Demo title="列表" :demo="Li">
             <div >使用Li标签定义列表。</div>
         </Demo>
+
+        <H2>图片</H2>
+        <P>使用<Strong>Img标签</Strong>定义图片，<Strong>src</Strong>属性定义图片的路径。</P>
+
+        <Alert><Strong>Img标签</Strong>的src属性，配置了<A href="https://vue-loader.vuejs.org/">vue-loader</A>的transformToRequire属性，在使用的时候要注意，src指向的地址会被webpack引入的。如果不想被webpack的leader引入</Alert>
+
+        <Demo title="图片" :demo="Img">
+            <div >使用Img标签定义图片。</div>
+        </Demo>
+
+        <H2>表格</H2>
+        <P>使用<Strong>Table标签</Strong>定义表格。</P>
+        <Demo title="表格" :demo="Table">
+            <div >使用Img标签定义图片。</div>
+        </Demo>
+
+        <H2>警告</H2>
+        <P>使用<Strong>Alert标签</Strong>定义警告内容。</P>
+        <Demo title="警告" :demo="Alert">
+            <div >使用Img标签定义图片。</div>
+        </Demo>
     </Doc>
 </template>
 <script>
@@ -53,6 +74,9 @@ import P from '../demo/Base/P'
 import A from '../demo/Base/A'
 import Strong from '../demo/Base/Strong'
 import Li from '../demo/Base/Li'
+import Img from '../demo/Base/Img'
+import Table from '../demo/Base/Table'
+import Alert from '../demo/Base/Alert'
 export default {
     data(){
         return {
@@ -62,6 +86,9 @@ export default {
             A,
             Strong,
             Li,
+            Img,
+            Table,
+            Alert,
         }
     }
 }
