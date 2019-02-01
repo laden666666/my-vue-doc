@@ -27,9 +27,9 @@
                 <Li :key="'required' + index" v-if="calcPropskey['required']">必填：<Strong>{{param.required ? '是' : '否'}}</Strong></Li>
                 <Li :key="'default' + index" v-if="calcPropskey['default']">默认值：<Strong><span v-html="param.default || '-'"></span></Strong></Li>
                 <Li :key="'li' + index">用法：</Li>
-                <div style="padding-left: 10px;" :key="'div' + index">
+                <div style="padding: 10px 0 0 10px;" :key="'div' + index">
                     <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
-                    <P style="white-space: pre-line;" :key="i" v-for="(txt, i) in param.describe.split('\n')">{{txt || '\n'}}</P>
+                    <P style="white-space: pre-wrap;line-height: 1.5;padding: 0;margin: 0;" :key="i" v-for="(txt, i) in param.describe.split('\n')">{{txt || '\n'}}</P>
                     <slot :name="param.name"></slot>
                 </div>
             </template>

@@ -149,36 +149,39 @@ export default {
         }
     },
     mounted(){
-        let scrollY = 0
-        let scrollY2 = 0
-        let scrollHandle1 = ()=>{
-            if(scrollY2 != scrollY){
-                scrollY2 = scrollY
-            }
-            scrollY = window.scrollY
-        }
-        let scrollHandle2 = debounce(()=>{
-            if(!this.isScrolling){
-                if (scrollY > 0 && scrollY < scrollY2 && scrollY < window.innerHeight) {
-                    this.showHome()
-                }
-            }
-        }, 20)
+        if(this.isHome){
 
-        window.addEventListener('scroll', scrollHandle1, {
-            passive: true
-        })
-        window.addEventListener('scroll', scrollHandle2, {
-            passive: true
-        })
-        this.$once('hook:beforeDestroy', function () {
-            window.removeEventListener('scroll', scrollHandle1, {
+            let scrollY = 0
+            let scrollY2 = 0
+            let scrollHandle1 = ()=>{
+                if(scrollY2 != scrollY){
+                    scrollY2 = scrollY
+                }
+                scrollY = window.scrollY
+            }
+            let scrollHandle2 = debounce(()=>{
+                if(!this.isScrolling){
+                    if (scrollY > 0 && scrollY < scrollY2 && scrollY < window.innerHeight) {
+                        this.showHome()
+                    }
+                }
+            }, 20)
+    
+            window.addEventListener('scroll', scrollHandle1, {
                 passive: true
             })
-            window.removeEventListener('scroll', scrollHandle2, {
+            window.addEventListener('scroll', scrollHandle2, {
                 passive: true
             })
-        })
+            this.$once('hook:beforeDestroy', function () {
+                window.removeEventListener('scroll', scrollHandle1, {
+                    passive: true
+                })
+                window.removeEventListener('scroll', scrollHandle2, {
+                    passive: true
+                })
+            })
+        }
     },
 }
 </script>

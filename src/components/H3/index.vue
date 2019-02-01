@@ -25,6 +25,6 @@ export default {
 }
 .h3-anchor{
     position: absolute;
-    top: -10px;
+    top: -14px;
 }
 </style>
