@@ -214,6 +214,9 @@ export default {
         width: 18px;
         cursor: pointer;
     }
+    .menu-toggle_btn:hover{
+        
+    }
     .menu-content{
         position: absolute;
         width: calc(100% - 300px);    

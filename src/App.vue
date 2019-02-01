@@ -21,6 +21,7 @@
 </template>
 <script>
 import app from './app.json'
+import debounce from 'lodash.debounce'
 
 var isFirefox = navigator.userAgent.indexOf("Firefox") != -1;
 
@@ -147,14 +148,49 @@ export default {
             this._pageY = undefined
         }
     },
+    mounted(){
+        let scrollY = 0
+        let scrollY2 = 0
+        let scrollHandle1 = ()=>{
+            if(scrollY2 != scrollY){
+                scrollY2 = scrollY
+            }
+            scrollY = window.scrollY
+        }
+        let scrollHandle2 = debounce(()=>{
+            if(!this.isScrolling){
+                if (scrollY > 0 && scrollY < scrollY2 && scrollY < window.innerHeight) {
+                    this.showHome()
+                }
+            }
+        }, 20)
+
+        window.addEventListener('scroll', scrollHandle1, {
+            passive: true
+        })
+        window.addEventListener('scroll', scrollHandle2, {
+            passive: true
+        })
+        this.$once('hook:beforeDestroy', function () {
+            window.removeEventListener('scroll', scrollHandle1, {
+                passive: true
+            })
+            window.removeEventListener('scroll', scrollHandle2, {
+                passive: true
+            })
+        })
+    },
 }
 </script>
 <style>
-html, body{
+html, body {
     padding: 0;
     margin: 0;
+}
+html, body, code, kbd, pre, samp {
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
+
 *{
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
