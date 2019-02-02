@@ -10,6 +10,7 @@ import MyFunction from './Function'
 import TimeLine from './TimeLine/'
 import NpmInfo from './NpmInfo/'
 import BrowserList from './BrowserList/'
+import Comments from './Comments/'
 
 // 文档相关
 import Doc from './Doc'
@@ -38,6 +39,7 @@ Vue.component('Function', MyFunction)
 Vue.component('TimeLine', TimeLine)
 Vue.component('NpmInfo', NpmInfo)
 Vue.component('BrowserList', BrowserList)
+Vue.component('Comments', Comments)
 
 // 文档相关
 Vue.component('Doc', Doc)

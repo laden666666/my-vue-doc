@@ -16,7 +16,7 @@ export default {
 <style lang="less" scoped>
 @import '../../theme.less';
 .h3{
-    margin: 32px 0 1.2em;
+    margin: 52px 0 1.2em;
     line-height: 1.2;
     position: relative;
     font-weight: 600;
