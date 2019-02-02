@@ -188,7 +188,7 @@ html, body {
     padding: 0;
     margin: 0;
 }
-html, body, code, kbd, pre, samp {
+html, body, body code, body kbd, body pre, body samp {
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 

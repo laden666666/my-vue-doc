@@ -35,6 +35,8 @@
 
         <H3>全局配置</H3>
         <P><Strong>/src/app.js</Strong>是框架的主配置文件，配置如文档库名称、版本等功能，具体请参考<A href="#/AppConfig"></A>。</P>
+
+        <!-- <Comments></Comments> -->
     </Doc>
 </template>
 <script>
