@@ -251,8 +251,13 @@ export default {
         .close > .menu-aside{
             width: 300px;
         }
+        .close .menu-nav{
+            overflow-y: visible;
+            opacity: 1;
+        }
         .menu-nav{
             overflow-y: visible;
+            opacity: 0;
         }
         .close  .menu-nav{
             overflow-y: scroll;
