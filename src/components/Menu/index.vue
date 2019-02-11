@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
     .menu{
         height: 100vh;
         width: 100%;    

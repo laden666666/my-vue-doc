@@ -2,8 +2,9 @@ const loaderUtils = require('loader-utils');
 const fs = require('fs-extra');
 const btoa = require('btoa');
 const path = require('path');
+const pathResolve = require('../pathResolve');
 
-let demoPath = path.join(__dirname, '../../src/demo/')
+let demoPath = pathResolve.resovleDocsPath('./src/demo/')
 
 module.exports = function codeLoader(source) {
 

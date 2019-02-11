@@ -96,7 +96,7 @@
 </script>
 
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
     .props {
         width: 100%;
         line-height: 40px;

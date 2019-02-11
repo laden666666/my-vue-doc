@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
     .img {
         max-width: 100%;
         margin: 10px 0;

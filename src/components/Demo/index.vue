@@ -118,7 +118,7 @@
 
 <style lang="less" scoped>
     
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
 
     .example{
         margin-top: 20px;

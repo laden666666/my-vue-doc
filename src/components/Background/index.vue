@@ -31,7 +31,6 @@ export default {
     }
 }
 </script>
-
 <style>
 .background {
     position: relative;

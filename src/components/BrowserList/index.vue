@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .browser_list{
     overflow-x: auto;
     overflow-y: hidden;

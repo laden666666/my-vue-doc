@@ -78,7 +78,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .home{
     height: 100vh;
     margin: 0 16px;

@@ -2,7 +2,7 @@
     <td class="td"><slot></slot></td>
 </template>
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
 
     .td{
         line-height: 1.5;

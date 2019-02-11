@@ -4,8 +4,8 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './components'
-import './style.less'
+import './components/'
+import 'docs-src/style.less'
 
 import MyDialog from 'my-vue-dialog';
 import 'my-vue-dialog/dist/my-vue-dialog.css';

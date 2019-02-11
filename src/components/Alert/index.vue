@@ -2,7 +2,7 @@
     <p class="alert"><slot></slot></p>
 </template>
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .alert{
     line-height: 1.6em;
     margin: 1.2em 0;

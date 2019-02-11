@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../../theme.less';
+@import '~docs-src/theme.less';
 .background-particles {
     background-color: @bg-color1;
     position: absolute;

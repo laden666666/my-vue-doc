@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .h2{
     margin: 55px 0 0.8em;
     padding-bottom: 0.7em;

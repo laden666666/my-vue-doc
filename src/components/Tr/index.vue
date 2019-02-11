@@ -2,7 +2,7 @@
     <tr class="tr"><slot></slot></tr>
 </template>
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
     .tr{
         margin : 0px ;
         padding : 0px ;

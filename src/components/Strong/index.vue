@@ -2,7 +2,7 @@
     <strong class="strong"><slot></slot></strong>
 </template>
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .strong{
     background-color: #f8f8f8;
     border-radius: 2px;

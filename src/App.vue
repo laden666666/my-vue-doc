@@ -21,7 +21,7 @@
     </div>
 </template>
 <script>
-import app from './app.json'
+import app from 'docs-src/app.json'
 import debounce from 'lodash.debounce'
 
 var isFirefox = navigator.userAgent.indexOf("Firefox") != -1;

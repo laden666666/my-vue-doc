@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
     .doc{
         margin: 0 auto;
         max-width: 100%;

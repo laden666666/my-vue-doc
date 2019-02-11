@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .h3{
     margin: 52px 0 1.2em;
     line-height: 1.2;

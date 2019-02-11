@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import app from '../../app.json'
+import app from 'docs-src/app.json'
 
 function initChangyan(){
     return new Promise((resolve, reject)=>{

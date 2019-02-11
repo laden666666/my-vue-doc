@@ -2,10 +2,12 @@
   "name": "my-vue-doc",
   "version": "1.0.0",
   "description": "",
+  "bin": {
+    "mydoc": "./cli/index.js"
+  },
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "doc": "docjsx c -p api md ./doc-jsx/README.jsx ./",
-    "build": "node build/build.js"
+    "publish": "node publish.js",
+    "doc": "docjsx c -p api md ./doc-jsx/README.jsx ./"
   },
   "main": "index.js",
   "repository": {
@@ -21,6 +23,7 @@
   "dependencies": {
     "btoa": "^1.2.1",
     "clipboard": "^2.0.4",
+    "commander": "^2.19.0",
     "docsify": "^4.8.6",
     "fs-extra": "^7.0.1",
     "highlightjs": "^9.12.0",
@@ -32,9 +35,7 @@
     "prismjs": "^1.15.0",
     "qs": "^6.6.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
-  },
-  "devDependencies": {
+    "vue-router": "^3.0.1",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",

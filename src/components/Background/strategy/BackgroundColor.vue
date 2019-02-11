@@ -3,7 +3,7 @@
     </div>
 </template>
 <style lang="less" scoped>
-@import '../../../theme.less';
+@import '~docs-src/theme.less';
 .background-background_color {
     background: linear-gradient(to left bottom, @bg-color1 0%, @bg-color2 100%);
     position: absolute;

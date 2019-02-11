@@ -4,7 +4,7 @@
     </div>
 </template>
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .table{
     overflow-x: auto;
     border-top: 1px solid #eee ;

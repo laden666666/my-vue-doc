@@ -185,8 +185,8 @@
 </template>
 <script>
 import AppConfig from '../demo/AppConfig/AppConfig'
-import BackgroundColor from '../components/Background/strategy/BackgroundColor'
-import Particles from '../components/Background/strategy/Particles'
+import BackgroundColor from 'my-vue-doc/src/components/Background/strategy/BackgroundColor'
+import Particles from 'my-vue-doc/src/components/Background/strategy/Particles'
 export default {
     data() {
         return {

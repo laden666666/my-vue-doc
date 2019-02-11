@@ -2,7 +2,7 @@
     <li class="li"><slot></slot></li>
 </template>
 <style lang="less" scoped>
-@import '../../theme.less';
+@import '~docs-src/theme.less';
 .li{
     line-height: 1.6em;
     margin: 1.2em 0 -1.2em;

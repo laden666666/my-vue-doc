@@ -48,7 +48,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    @import '../../theme.less';
+    @import '~docs-src/theme.less';
     .menu-nav_list{
         list-style: none;
         margin: 0 0 0 25px;

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import app from '../app.json'
+import app from 'docs-src/app.json'
 Vue.use(Router)
 
 function getRoute(menu, array){
@@ -13,7 +13,7 @@ function getRoute(menu, array){
             array.push({
                 path: route.path.substr(1),
                 name: route.path,
-                component: require('../pages/' + path).default,
+                component: require('docs-src/pages/' + path).default,
             })
         }
         if(route.children){
