@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 var program = require('commander')
-// var build = require('../build/build')
+var build = require('../build/build')
 var dev = require('../build/dev')
 var package = require('../package.json')
 

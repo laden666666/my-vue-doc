@@ -41,13 +41,6 @@ module.exports = function(){
                 '    Tip: built files are meant to be served over an HTTP server.\n' +
                 '    Opening index.html over file:// won\'t work.\n'
             ))
-
-            if(app.name != 'my-vue-doc'){
-                rm(pathResolve.resovleDocsPath('../docs/'), err=>{
-                    if (err) throw err
-                    fs.copy(pathResolve.resovleDocsPath('./docs'), pathResolve.resovleDocsPath('../docs/'))
-                })
-            }
         })
     })
 }

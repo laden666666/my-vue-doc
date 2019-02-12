@@ -6,12 +6,10 @@ exports.resovleFramePath = function(...relativePath){
     return path.join(__dirname, '../', ...relativePath)
 }
 
-
 //相对文档的路径
 exports.resovleDocsPath = function( ...relativePath){
-    return path.join( process.cwd(), ...relativePath)
+    return path.join(process.cwd(), ...relativePath)
 }
-
 
 //获取任意一个存在的目录
 exports.resovleAnyPath = function(...relativePath){

@@ -14,9 +14,13 @@ module.exports = function(){
         });
         const server = new WebpackDevServer(compiler, devServerOptions);
         
-        server.listen(() => {
-            console.log('Starting server on http://localhost:8080');
+        server.listen(devServerOptions.port, devServerOptions.host, (err) => {
+            if(err){
+                console.error(err)
+            } else {
+                console.log('Starting server http://' + devServerOptions.host + ':' + devServerOptions.port);
+            }
+           
         });
     })
 }
-

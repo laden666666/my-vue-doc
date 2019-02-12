@@ -7,7 +7,7 @@ const app = require(pathResolve.resovleDocsPath('./src/app.json'))
 const vueLoaderConfig = require('./vue-loader.conf')
 
 module.exports = {
-    context: pathResolve.resovleDocsPath('./'),
+    context: pathResolve.resovleFramePath('./'),
     entry: {
         app: pathResolve.resovleFramePath('./src/main.js'),
     },
