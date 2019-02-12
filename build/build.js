@@ -1,8 +1,6 @@
 'use strict'
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
-
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
@@ -15,6 +13,8 @@ const webpackConfig = require('./webpack.prod.conf')
 const fs = require('fs-extra')
 
 module.exports = function(){
+    process.env.NODE_ENV = 'production'
+    
     const spinner = ora('building for production...')
     spinner.start()
 

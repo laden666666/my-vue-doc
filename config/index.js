@@ -3,7 +3,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const pathResolve = require('../build/pathResolve')
-const path = require('path')
 
 module.exports = {
   dev: {
@@ -39,7 +38,7 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../docs/index.html'),
+    index: pathResolve.resovleFramePath('./index.html'),
 
     // Paths
     assetsRoot: pathResolve.resovleDocsPath('../docs'),

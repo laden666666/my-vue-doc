@@ -20,5 +20,12 @@ program
     });
 
 program
+    .command('init')
+    .description('初始化文档')
+    .action(function (option) {
+        dev()
+    });
+
+program
     .version(package.version)
     .parse(process.argv);

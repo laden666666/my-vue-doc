@@ -4,6 +4,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const webpackConfigPromise = require('./webpack.dev.conf');
 
 module.exports = function(){
+    process.env.NODE_ENV = 'development'
 
     webpackConfigPromise.then(webpackConfig=>{
         const compiler = Webpack(webpackConfig);

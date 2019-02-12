@@ -9,12 +9,12 @@
 
     <h3>编辑模式</h3>
     <p>执行：</p>
-    <code>mydoc run dev</code>
+    <code>mydoc dev</code>
     <p>然后在<span>/src/pages</span>目录中编辑文档即可。</p>
 
     <h3>发布模式</h3>
     <p>执行：</p>
-    <code>mydoc run build</code>
+    <code>mydoc build</code>
     <p>然后将<span>docs</span>目录拷贝到github的对应项目中的<span>docs</span>目录即可。</p>
 
     <h2>目录说明</h2>

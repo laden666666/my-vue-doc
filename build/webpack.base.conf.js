@@ -29,6 +29,7 @@ module.exports = {
             'vue': pathResolve.resovleAnyPath('./node_modules/vue'),
             'vuex': pathResolve.resovleAnyPath('./node_modules/vuex'),
             'docs-src': pathResolve.resovleDocsPath('./src'),
+            'app-name': app.name,
             'background': path.join(__dirname, '../src/components/Background/strategy/', app.background + '.vue')
         }
     },

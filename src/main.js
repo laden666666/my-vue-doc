@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './components/'
-import 'docs-src/style.less'
+import app from 'docs-src/app.js'
 
 import MyDialog from 'my-vue-dialog';
 import 'my-vue-dialog/dist/my-vue-dialog.css';
@@ -62,6 +62,6 @@ window.app = new Vue({
     template: '<App/>',
     myDialog: {key: 'my-vue-doc'},
     mounted () {
-      document.dispatchEvent(new Event('render-event'))
+        document.dispatchEvent(new Event('render-event'))
     }
 })
