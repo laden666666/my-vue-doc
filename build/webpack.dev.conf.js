@@ -3,7 +3,7 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const pathResolve = require('./pathResolve')
-const app = require(pathResolve.resovleDocsPath('./src/app.json'))
+const app = require(pathResolve.resovleDocsPath('./docs-src/app.json'))
 const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
@@ -14,6 +14,14 @@ const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
+
+ // add hot-reload related code to entry chunks
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+    baseWebpackConfig.entry[name] = [
+        pathResolve.resovleAnyPath('./node_modules/webpack-dev-server/client'),
+        pathResolve.resovleAnyPath('./node_modules/webpack/hot/dev-server'), 
+    ].concat(baseWebpackConfig.entry[name])
+})
 
 const devWebpackConfig = merge(baseWebpackConfig, {
     module: {
@@ -68,7 +76,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         // copy custom static assets
         new CopyWebpackPlugin([
             {
-                from: pathResolve.resovleDocsPath('./static'),
+                from: pathResolve.resovleDocsPath('./docs-src/static'),
                 to: config.dev.assetsSubDirectory,
                 ignore: ['.*']
             }

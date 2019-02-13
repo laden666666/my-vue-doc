@@ -3,7 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const pathResolve = require('./pathResolve')
-const app = require(pathResolve.resovleDocsPath('./src/app.json'))
+const app = require(pathResolve.resovleDocsPath('./docs-src/app.json'))
 const vueLoaderConfig = require('./vue-loader.conf')
 
 module.exports = {
@@ -28,9 +28,9 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js',
             'vue': pathResolve.resovleAnyPath('./node_modules/vue'),
             'vuex': pathResolve.resovleAnyPath('./node_modules/vuex'),
-            'docs-src': pathResolve.resovleDocsPath('./src'),
-            'app-name': app.name,
-            'background': path.join(__dirname, '../src/components/Background/strategy/', app.background + '.vue')
+            'docs-src': pathResolve.resovleDocsPath('./docs-src'),
+            'app-name': app.name == 'my-vue-doc' ? pathResolve.resovleFramePath('./') : pathResolve.resovleDocsPath('./'),
+            'background': pathResolve.resovleFramePath('./src/components/Background/strategy/', app.background + '.vue')
         }
     },
     resolveLoader: {
@@ -58,7 +58,7 @@ module.exports = {
                 loader: 'babel-loader',
                 options: require('./babelOptions.js'),
                 include: [
-                    pathResolve.resovleDocsPath('./src'), 
+                    pathResolve.resovleDocsPath('./docs-src'), 
                     pathResolve.resovleFramePath('./src'), 
                     pathResolve.resovleAnyPath('./node_modules/webpack-dev-server/client'), 
                     pathResolve.resovleAnyPath('./node_modules/vue-particles'), 

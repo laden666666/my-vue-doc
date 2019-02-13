@@ -62,9 +62,6 @@ export function goHash(hash, router){
             }
         } catch(e){console.log(e)}
     } else {
-        let title = document.querySelector(`#menu`)
-        if(title){
-            title.scrollIntoView()
-        }
+        window.scrollTo(0, 0)
     }
 }

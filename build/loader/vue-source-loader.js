@@ -4,7 +4,7 @@ const btoa = require('btoa');
 const path = require('path');
 const pathResolve = require('../pathResolve');
 
-let demoPath = pathResolve.resovleDocsPath('./src/demo/')
+let demoPath = pathResolve.resovleDocsPath('./docs-src/demo/')
 
 module.exports = function codeLoader(source) {
 

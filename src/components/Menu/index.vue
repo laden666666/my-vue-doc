@@ -91,10 +91,14 @@ export default {
             if(!cacheTitleDom.length || window.scrollY <= top){
                 this.$router.replace(this.$router.history.current.path)
             } else {
-                for(let title of cacheTitleDom){
-                    if(title && title.getBoundingClientRect().top >= 0){
-                        this.$router.replace(this.$router.history.current.path + '#' + title.getAttribute('name'))
-                        break ;
+                if(this.$router.history.current.path == '/' && window.scrollY < window.innerHeight){
+                    this.$router.replace(this.$router.history.current.path)
+                } else {
+                    for(let title of cacheTitleDom){
+                        if(title && title.getBoundingClientRect().top >= 0){
+                            this.$router.replace(this.$router.history.current.path + '#' + title.getAttribute('name'))
+                            break ;
+                        }
                     }
                 }
             }

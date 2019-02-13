@@ -8,12 +8,11 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const pathResolve = require('./pathResolve')
-const app = require(pathResolve.resovleDocsPath('./src/app.json'))
+const app = require(pathResolve.resovleDocsPath('./docs-src/app.json'))
 const webpackConfig = require('./webpack.prod.conf')
 const fs = require('fs-extra')
 
 module.exports = function(){
-    process.env.NODE_ENV = 'production'
     
     const spinner = ora('building for production...')
     spinner.start()

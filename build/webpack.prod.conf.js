@@ -4,7 +4,7 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const pathResolve = require('./pathResolve')
-const app = require(pathResolve.resovleDocsPath('./src/app.json'))
+const app = require(pathResolve.resovleDocsPath('./docs-src/app.json'))
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -116,14 +116,14 @@ const webpackConfig = merge(baseWebpackConfig, {
         // copy custom static assets
         new CopyWebpackPlugin([
             {
-                from: pathResolve.resovleDocsPath('./static'),
+                from: pathResolve.resovleDocsPath('./docs-src/static'),
                 to: config.build.assetsSubDirectory,
                 ignore: ['.*']
             }
         ]),
         new PrerenderSpaPlugin(
             // 编译后的html需要存放的路径
-            pathResolve.resovleDocsPath('./docs'),
+            pathResolve.resovleDocsPath('./docs/'),
             // 列出哪些路由需要预渲染
             [ '/' ]
         )
