@@ -1,7 +1,7 @@
 {
   "name": "my-vue-doc",
   "version": "0.0.1",
-  "description": "",
+  "description": "这是一个用于创建my系列控件文档的框架，样式参考iview。目前不对外开放，仅针对my系列控件定制化使用。",
   "bin": {
     "mydoc": "./cli/index.js"
   },
@@ -11,7 +11,6 @@
     "build": "node build",
     "doc": "docjsx c -p api md ./doc-jsx/README.jsx ./"
   },
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/laden666666/my-vue-doc.git"
