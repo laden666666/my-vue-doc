@@ -1,6 +1,6 @@
 {
   "name": "my-vue-doc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "这是一个用于创建my系列控件文档的框架，样式参考iview。目前不对外开放，仅针对my系列控件定制化使用。",
   "bin": {
     "mydoc": "./cli/index.js"

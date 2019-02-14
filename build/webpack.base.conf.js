@@ -28,8 +28,9 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js',
             'vue': pathResolve.resovleAnyPath('./node_modules/vue'),
             'vuex': pathResolve.resovleAnyPath('./node_modules/vuex'),
+            [app.name]: pathResolve.resovleDocsPath('./'),
             'docs-src': pathResolve.resovleDocsPath('./docs-src'),
-            'app-name': app.name == 'my-vue-doc' ? pathResolve.resovleFramePath('./') : pathResolve.resovleDocsPath('./'),
+            'app-name': pathResolve.resovleDocsPath('./'),
             'background': pathResolve.resovleFramePath('./src/components/Background/strategy/', app.background + '.vue')
         }
     },
