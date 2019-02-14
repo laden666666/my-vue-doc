@@ -18,8 +18,8 @@ const PORT = process.env.PORT && Number(process.env.PORT)
  // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
     baseWebpackConfig.entry[name] = [
-        pathResolve.resovleAnyPath('./node_modules/webpack-dev-server/client'),
-        pathResolve.resovleAnyPath('./node_modules/webpack/hot/dev-server'), 
+        pathResolve.resovleAnyPath('./node_modules/webpack-dev-server/client/index.js'),
+        pathResolve.resovleAnyPath('./node_modules/webpack/hot/dev-server.js'), 
     ].concat(baseWebpackConfig.entry[name])
 })
 
