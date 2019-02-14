@@ -6,7 +6,6 @@
     "mydoc": "./cli/index.js"
   },
   "scripts": {
-    "publish": "node publish.js",
     "dev": "node dev",
     "build": "node build",
     "doc": "docjsx c -p api md ./doc-jsx/README.jsx ./"
