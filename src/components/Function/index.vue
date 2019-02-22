@@ -2,14 +2,14 @@
     <div class="function">
         <P class="function-desc" v-if="calcFunData.describeText">{{calcFunData.describeText}}</P>
         <template v-if="calcFunData.paramsText && calcFunData.paramsText.length">
-            <Li>参数：</Li>
+            <Li>{{$LANG['doc.function.params']}}：</Li>
             <Instructions :data="calcFunData.paramsText">
                 <slot :name="name" v-for="name in $slots"></slot>
             </Instructions>
         </template>
 
         <template v-if="calcFunData.returnText">
-            <Li>返回值：</Li>
+            <Li>{{$LANG['doc.function.return-value']}}：</Li>
             <Instructions :data="[calcFunData.returnText]">
                 <slot name="return"></slot>
             </Instructions>

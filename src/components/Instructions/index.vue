@@ -2,16 +2,16 @@
     <div class="props">
         <Table v-if="type === 'table'">
             <Tr>
-                <Th>属性名</Th>
-                <Th v-if="calcPropskey['type']">类型</Th>
-                <Th v-if="calcPropskey['required']">必填</Th>
-                <Th v-if="calcPropskey['default']">默认值</Th>
-                <Th>说明</Th>
+                <Th>{{$LANG['doc.instructions.attr']}}</Th>
+                <Th v-if="calcPropskey['type']">{{$LANG['doc.instructions.type']}}</Th>
+                <Th v-if="calcPropskey['required']">{{$LANG['doc.instructions.required']}}</Th>
+                <Th v-if="calcPropskey['default']">{{$LANG['doc.instructions.default']}}</Th>
+                <Th>{{$LANG['doc.instructions.explain']}}</Th>
             </Tr>
             <Tr v-for="(param, index) in calcPropsData" :key="index">
                 <Td><strong>{{param.name}}</strong></Td>
                 <Td v-if="calcPropskey['type']" v-html="param.type || ''"></Td>
-                <Td v-if="calcPropskey['required']">{{param.required ? '是' : '否'}}</Td>
+                <Td v-if="calcPropskey['required']">{{param.required ? $LANG['doc.instructions.yes'] : $LANG['doc.instructions.no']}}</Td>
                 <Td v-if="calcPropskey['default']" v-html="param.default || '-'"></Td>
                 <Td>
                     <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
@@ -23,10 +23,10 @@
         <template v-else>
             <template v-for="(param, index) in calcPropsData">
                 <H3 :key="'h3' + index">{{param.name}}</H3>
-                <Li :key="'type' + index" v-if="calcPropskey['type']">类型：<Strong><span v-html="param.type || ''"></span></Strong></Li>
-                <Li :key="'required' + index" v-if="calcPropskey['required']">必填：<Strong>{{param.required ? '是' : '否'}}</Strong></Li>
-                <Li :key="'default' + index" v-if="calcPropskey['default']">默认值：<Strong><span v-html="param.default || '-'"></span></Strong></Li>
-                <Li :key="'li' + index">用法：</Li>
+                <Li :key="'type' + index" v-if="calcPropskey['type']">{{$LANG['doc.instructions.type']}}：<Strong><span v-html="param.type || ''"></span></Strong></Li>
+                <Li :key="'required' + index" v-if="calcPropskey['required']">{{$LANG['doc.instructions.required']}}：<Strong>{{param.required ? $LANG['doc.instructions.yes'] : $LANG['doc.instructions.no']}}</Strong></Li>
+                <Li :key="'default' + index" v-if="calcPropskey['default']">{{$LANG['doc.instructions.default']}}：<Strong><span v-html="param.default || '-'"></span></Strong></Li>
+                <Li :key="'li' + index">{{$LANG['doc.instructions.usage']}}：</Li>
                 <div style="padding: 10px 0 0 10px;" :key="'div' + index">
                     <Code :code="param.demo" v-if="calcPropskey['demo']"></Code>
                     <P style="white-space: pre-wrap;line-height: 1.5;padding: 0;margin: 0;" :key="i" v-for="(txt, i) in param.describe.split('\n')">{{txt || '\n'}}</P>
