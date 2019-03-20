@@ -9,6 +9,7 @@ import app from 'docs-src/app.js'
 
 import MyDialog from 'my-vue-dialog';
 import 'my-vue-dialog/dist/my-vue-dialog.css';
+import './locales'
 Vue.use(MyDialog)
 
 import {Icon, Button, Tooltip, Row, Col, Timeline, TimelineItem} from 'iview';

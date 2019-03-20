@@ -42,7 +42,7 @@
     <div class="code" v-if="!onlyBtn">
         <pre :class="{bg: bg}"><code :class="language" ref="code" v-html="showCode"></code></pre>
         <span class="scale" @click="scale">
-            <Tooltip :content="'放大'" placement="top" transfer>
+            <Tooltip :content="$LANG['doc.code.zoom']" placement="top" transfer>
                 <Icon type="md-qr-scanner" size="18"></Icon>
             </Tooltip>
         </span>
@@ -55,7 +55,7 @@
     </div>
 
     <Button v-else @click="scale" icon="md-qr-scanner"  shape="circle">
-        查看代码
+        {{$LANG['doc.code.view-code']}}
         <div ref="code" style="display: none"><slot></slot></div>
     </Button>
 
@@ -64,7 +64,6 @@
     import Clipboard from 'clipboard';
     import ShowScale from './ShowScale';
     import highlight from './highlight';
-
     export default {
         props: {
             // 展示代码的语言
@@ -124,7 +123,7 @@
                     clipboard.destroy();
                     this.copied = true;
                     if (this.docLang === 'zh-CN') {
-                        this.$Message.success('代码已复制到剪贴板');
+                        this.$Message.success(this.$LANG['doc.code.copy-msg']);
                     } else {
                         this.$Message.success('Code copied');
                     }
