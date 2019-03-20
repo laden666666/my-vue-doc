@@ -8,7 +8,7 @@ import app from 'docs-src/app.json'
 
 function initChangyan(){
     return new Promise((resolve, reject)=>{
-        let d = "http://changyan.sohu.com/upload/changyan.js"
+        let d = "https://changyan.sohu.com/upload/changyan.js"
         var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;
         var b=document.createElement("script");
         b.setAttribute("type","text/javascript");
