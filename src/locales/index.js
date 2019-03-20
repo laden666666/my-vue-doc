@@ -1,4 +1,7 @@
 import Vue from 'vue'
 const lang = localStorage.getItem('locales') || 'zh-CN'
-let langInfo = require(`./${lang}'`)
-Vue.prototype.$LANG = langInfo
+if('zh-CN' === lang){
+    Vue.prototype.$LANG = require('./zh-CN').default
+} else if('en-US' === lang){
+    Vue.prototype.$LANG = require('./en-US').default
+}
