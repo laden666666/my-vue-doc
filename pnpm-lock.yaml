@@ -13,6 +13,8 @@ importers:
 
   packages/my-vue-doc:
     specifiers:
+      ansi-html: ^0.0.9
+      ansi-regex: ^6.0.1
       autoprefixer: ^7.1.2
       babel-core: ^6.22.1
       babel-helper-vue-jsx-merge-props: ^2.0.3
@@ -24,11 +26,13 @@ importers:
       babel-polyfill: ^6.26.0
       babel-preset-env: ^1.3.2
       babel-preset-stage-2: ^6.22.0
+      babel-runtime: ^6.26.0
       btoa: ^1.2.1
       chalk: ^2.0.1
       clipboard: ^2.0.4
       commander: ^10.0.0
       copy-webpack-plugin: ^4.0.1
+      core-js: ^2.6.12
       css-loader: ^0.28.0
       docsify: ^4.8.6
       extract-text-webpack-plugin: ^3.0.0
@@ -37,6 +41,7 @@ importers:
       fs-extra: ^7.0.1
       highlightjs: ^9.12.0
       hljs: ^6.2.3
+      html-entities: ^2.3.3
       html-webpack-plugin: ^2.30.1
       intro.js: ^2.9.3
       iview: ^3.2.2
@@ -44,12 +49,14 @@ importers:
       less-loader: ^4.1.0
       loader-utils: ^1.2.3
       lodash.debounce: ^4.0.8
+      loglevel: ^1.8.1
       my-doc-jsx: ^0.4.2
       my-doc-jsx-plugin-api: ^0.1.1
       my-vue-dialog: 0.0.1
       node-notifier: ^5.1.2
       optimize-css-assets-webpack-plugin: ^3.2.0
       ora: ^1.4.0
+      popper.js: ^1.16.1
       portfinder: ^1.0.13
       postcss-import: ^11.0.0
       postcss-loader: ^2.0.8
@@ -58,13 +65,17 @@ importers:
       prismjs: ^1.15.0
       qs: ^6.6.0
       raw-loader: ^1.0.0
+      regenerator-runtime: ^0.13.11
       rimraf: ^2.6.0
       semver: ^5.3.0
       shelljs: ^0.7.6
+      sockjs-client: ^1.6.1
       string-loader: 0.0.1
+      strip-ansi: ^7.0.1
       uglifyjs-webpack-plugin: ^1.1.1
       url-loader: ^0.5.8
       vue: ^2.5.2
+      vue-hot-reload-api: ^2.3.4
       vue-loader: ^13.3.0
       vue-particles: ^1.0.9
       vue-router: ^3.0.1
@@ -75,6 +86,8 @@ importers:
       webpack-dev-server: ^2.9.1
       webpack-merge: ^4.1.0
     dependencies:
+      ansi-html: 0.0.9
+      ansi-regex: 6.0.1
       autoprefixer: 7.2.6
       babel-core: 6.26.3
       babel-helper-vue-jsx-merge-props: 2.0.3
@@ -86,11 +99,13 @@ importers:
       babel-polyfill: 6.26.0
       babel-preset-env: 1.7.0
       babel-preset-stage-2: 6.24.1
+      babel-runtime: 6.26.0
       btoa: 1.2.1
       chalk: 2.4.2
       clipboard: 2.0.11
       commander: 10.0.0
       copy-webpack-plugin: 4.6.0
+      core-js: 2.6.12
       css-loader: 0.28.11
       docsify: 4.13.0
       extract-text-webpack-plugin: 3.0.2_webpack@3.12.0
@@ -99,6 +114,7 @@ importers:
       fs-extra: 7.0.1
       highlightjs: 9.16.2
       hljs: 6.2.3
+      html-entities: 2.3.3
       html-webpack-plugin: 2.30.1_webpack@3.12.0
       intro.js: 2.9.3
       iview: 3.5.4_vue@2.7.14
@@ -106,12 +122,14 @@ importers:
       less-loader: 4.1.0_less@3.13.1+webpack@3.12.0
       loader-utils: 1.4.2
       lodash.debounce: 4.0.8
+      loglevel: 1.8.1
       my-doc-jsx: 0.4.2_wz4jglhb363euc7kdzkh34o6di
       my-doc-jsx-plugin-api: 0.1.1_my-doc-jsx@0.4.2
       my-vue-dialog: 0.0.1_vue@2.7.14
       node-notifier: 5.4.5
       optimize-css-assets-webpack-plugin: 3.2.1
       ora: 1.4.0
+      popper.js: 1.16.1
       portfinder: 1.0.32
       postcss-import: 11.1.0
       postcss-loader: 2.1.6
@@ -120,13 +138,17 @@ importers:
       prismjs: 1.29.0
       qs: 6.11.1
       raw-loader: 1.0.0_webpack@3.12.0
+      regenerator-runtime: 0.13.11
       rimraf: 2.7.1
       semver: 5.7.1
       shelljs: 0.7.8
+      sockjs-client: 1.6.1
       string-loader: 0.0.1
+      strip-ansi: 7.0.1
       uglifyjs-webpack-plugin: 1.3.0_webpack@3.12.0
       url-loader: 0.5.9_file-loader@1.1.11
       vue: 2.7.14
+      vue-hot-reload-api: 2.3.4
       vue-loader: 13.7.3_krlkgggcd4gw5zlxktysnnpvsm
       vue-particles: 1.0.9
       vue-router: 3.6.5_vue@2.7.14
@@ -296,6 +318,12 @@ packages:
     hasBin: true
     dev: false
 
+  /ansi-html/0.0.9:
+    resolution: {integrity: sha512-ozbS3LuenHVxNRh/wdnN16QapUHzauqSomAl1jwwJRRsGwFwtj644lIhxfWu0Fy0acCij2+AEgHvjscq3dlVXg==}
+    engines: {'0': node >= 0.8.0}
+    hasBin: true
+    dev: false
+
   /ansi-regex/2.1.1:
     resolution: {integrity: sha512-TIGnTpdo+E3+pCyAluZvtED5p5wCqLdezCyhPZzKPcxvFplEt4i+W7OONCKgeZFT3+y5NZZfOOS/Bdcanm1MYA==}
     engines: {node: '>=0.10.0'}
@@ -304,6 +332,11 @@ packages:
   /ansi-regex/3.0.1:
     resolution: {integrity: sha512-+O9Jct8wf++lXxxFc4hc8LsjaSq0HFzzL7cVsw8pRDIPdjKD2mT4ytDZlLuSBZ4cLKZFXIrMGO7DbQCtMJJMKw==}
     engines: {node: '>=4'}
+    dev: false
+
+  /ansi-regex/6.0.1:
+    resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
+    engines: {node: '>=12'}
     dev: false
 
   /ansi-styles/2.2.1:
@@ -3173,6 +3206,11 @@ packages:
       original: 1.0.2
     dev: false
 
+  /eventsource/2.0.2:
+    resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /evp_bytestokey/1.0.3:
     resolution: {integrity: sha512-/f2Go4TognH/KvCISP7OUsHn85hT9nUkxxA9BEWxFn+Oj9o8ZNLm/40hdlgSLyuOimsrTKLUMEorQexp/aPQeA==}
     dependencies:
@@ -3998,6 +4036,10 @@ packages:
 
   /html-entities/1.4.0:
     resolution: {integrity: sha512-8nxjcBcd8wovbeKx7h3wTji4e6+rhaVuPNpMqwWgnHh+N9ToqsCs6XztWRBPQ+UtzsoMAdKZtUENoVzU/EMtZA==}
+    dev: false
+
+  /html-entities/2.3.3:
+    resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
     dev: false
 
   /html-minifier/3.5.21:
@@ -6893,6 +6935,10 @@ packages:
     resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
     dev: false
 
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
+
   /regenerator-transform/0.10.1:
     resolution: {integrity: sha512-PJepbvDbuK1xgIgnau7Y90cwaAmO/LCLMI2mPvaXq2heGMR3aWW5/BQvYrhJ8jgmQjXewXvBjzfqKcVOmhjZ6Q==}
     dependencies:
@@ -7384,6 +7430,19 @@ packages:
       - supports-color
     dev: false
 
+  /sockjs-client/1.6.1:
+    resolution: {integrity: sha512-2g0tjOR+fRs0amxENLi/q5TiJTqY+WXFOzb5UwXndlK6TO3U/mirZznpx6w34HVMoc3g7cY24yC/ZMIYnDlfkw==}
+    engines: {node: '>=12'}
+    dependencies:
+      debug: 3.2.7
+      eventsource: 2.0.2
+      faye-websocket: 0.11.4
+      inherits: 2.0.4
+      url-parse: 1.5.10
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /sockjs/0.3.19:
     resolution: {integrity: sha512-V48klKZl8T6MzatbLlzzRNhMepEys9Y4oGFpypBFFn1gLI/QQ9HtLLyWJNbPlwGLelOVOEijUbTTJeLLI59jLw==}
     dependencies:
@@ -7634,6 +7693,13 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       ansi-regex: 3.0.1
+    dev: false
+
+  /strip-ansi/7.0.1:
+    resolution: {integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==}
+    engines: {node: '>=12'}
+    dependencies:
+      ansi-regex: 6.0.1
     dev: false
 
   /strip-bom/2.0.0:

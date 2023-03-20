@@ -173,20 +173,20 @@
         <H3>BackgroundColor</H3>
         <P>使用渐变的背景色当背景</P>
         <div class="bg">
-            <BackgroundColor></BackgroundColor>
+            <!-- <BackgroundColor></BackgroundColor> -->
         </div>
 
         <H3>Particles</H3>
         <P>使用<A href="https://github.com/VincentGarreau/particles.js">Particles</A>的背景色当背景</P>
         <div class="bg">
-            <Particles></Particles>
+            <!-- <Particles></Particles> -->
         </div>
     </Doc>
 </template>
 <script>
 import AppConfig from '../demo/AppConfig/AppConfig'
-import BackgroundColor from 'my-vue-doc/src/components/Background/strategy/BackgroundColor'
-import Particles from 'my-vue-doc/src/components/Background/strategy/Particles'
+// import BackgroundColor from 'my-vue-doc/src/components/Background/strategy/BackgroundColor'
+// import Particles from 'my-vue-doc/src/components/Background/strategy/Particles'
 export default {
     data() {
         return {
@@ -194,8 +194,8 @@ export default {
         }
     },
     components:{
-        BackgroundColor,
-        Particles,
+        // BackgroundColor,
+        // Particles,
     }
 }
 </script>
