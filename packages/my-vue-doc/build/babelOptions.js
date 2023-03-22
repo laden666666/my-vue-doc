@@ -1,25 +1,10 @@
-const pathResolve = require('./pathResolve')
+const pathResolve = require('./pathResolve');
+const babelPresetEnvPath = pathResolve.resolveLibNpmPath('@babel/preset-env');
+
 
 module.exports = {
     "presets": [
-        [pathResolve.resovleAnyPath('./node_modules/babel-preset-env/'), {
-            "modules": false,
-            "targets": {
-                "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-            }
-        }],
-        pathResolve.resovleAnyPath('./node_modules/babel-preset-stage-2/')
+        babelPresetEnvPath,
+        {}
     ],
-    "plugins": [
-        pathResolve.resovleAnyPath('./node_modules/babel-plugin-transform-vue-jsx/'),
-        pathResolve.resovleAnyPath('./node_modules/babel-plugin-transform-runtime/'),
-        [
-            pathResolve.resovleAnyPath('./node_modules/babel-plugin-import/'),
-            {
-                "libraryName": "iview",
-                "libraryDirectory": "src/components"
-            }
-        ]
-    ],
-    babelrc: false ,
 }

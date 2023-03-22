@@ -1,10 +1,9 @@
-const loaderUtils = require('loader-utils');
 const fs = require('fs-extra');
 const btoa = require('btoa');
 const path = require('path');
 const pathResolve = require('../pathResolve');
 
-let demoPath = pathResolve.resovleDocsPath('./docs-src/demo/')
+let demoPath = pathResolve.resolveDocsPath('./docs-src/demo/')
 
 module.exports = function codeLoader(source) {
 
@@ -13,9 +12,12 @@ module.exports = function codeLoader(source) {
         return source
     }
 
+    const resources = this.resource.split('?');
+    const resource = resources[0];
+
     // 获取base64后的源码
-    let sourceCode = btoa(encodeURI(fs.readFileSync(this.resource).toString()))
-    let insertCode = 
+    let sourceCode = btoa(encodeURI(fs.readFileSync(resource).toString()))
+    let insertCode =
 `;
 if(typeof Component !== 'undefined' && Component.exports){
     Component.exports.__vueSource = '${sourceCode}'

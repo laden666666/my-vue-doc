@@ -1,26 +1,23 @@
 
-const Webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const webpackConfigPromise = require('./webpack.dev.conf');
+const childProcess = require('child_process');
+const pathResolve = require('./pathResolve');
 
-module.exports = function(){
+module.exports = function() {
+    childProcess.spawn(
+        pathResolve.resolveLibPath('./node_modules/.bin/webpack'),
+        ['serve', '--config', pathResolve.resolveLibPath('./build/webpack.dev.conf.js')],
+        {
+            cwd: process.cwd(),
+            stdio: 'inherit'
+        }
+    )
+    // childProcess.spawn(
+    //     'npm',
+    //     ['run', 'dev'],
+    //     {
+    //         cwd: process.cwd(),
+    //         stdio: 'inherit'
+    //     }
+    // )
 
-    webpackConfigPromise.then(webpackConfig=>{
-        const compiler = Webpack(webpackConfig);
-        const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-            stats: {
-                colors: true,
-            },
-        });
-        const server = new WebpackDevServer(compiler, devServerOptions);
-        
-        server.listen(devServerOptions.port, devServerOptions.host, (err) => {
-            if(err){
-                console.error(err)
-            } else {
-                console.log('Starting server http://' + devServerOptions.host + ':' + devServerOptions.port);
-            }
-           
-        });
-    })
 }

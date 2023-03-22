@@ -2,10 +2,10 @@ const pathResolve = require('../build/pathResolve')
 const fs = require('fs-extra')
 
 module.exports = function(){
-    if(fs.existsSync(pathResolve.resovleDocsPath('docs-src'))){
+    if(fs.existsSync(pathResolve.resolveDocsPath('docs-src'))){
         throw new Error('docs-src directory already exists')
     }
-    const package = require(pathResolve.resovleDocsPath('./package.json'))
+    const package = require(pathResolve.resolveDocsPath('./package.json'))
     let name = package.name
 
     if(!name){
@@ -14,21 +14,21 @@ module.exports = function(){
 
     return Promise.resolve()
     .then(()=>{
-        return fs.copy(pathResolve.resovleFramePath('docs-src'), 
-            pathResolve.resovleDocsPath('docs-src'))
+        return fs.copy(pathResolve.resolveLibPath('docs-src'),
+            pathResolve.resolveDocsPath('docs-src'))
     })
     .then(()=>{
-        return fs.emptyDir(pathResolve.resovleDocsPath('docs-src/demo'))
+        return fs.emptyDir(pathResolve.resolveDocsPath('docs-src/demo'))
     })
     .then(()=>{
-        return fs.emptyDir(pathResolve.resovleDocsPath('docs-src/pages'))
+        return fs.emptyDir(pathResolve.resolveDocsPath('docs-src/pages'))
     })
     .then(()=>{
-        return fs.copy(pathResolve.resovleFramePath('docs-src/pages/Index.vue'),
-            pathResolve.resovleDocsPath('docs-src/pages/Index.vue'))
+        return fs.copy(pathResolve.resolveLibPath('docs-src/pages/Index.vue'),
+            pathResolve.resolveDocsPath('docs-src/pages/Index.vue'))
     })
     .then(()=>{
-        return fs.outputJSON(pathResolve.resovleDocsPath('docs-src/app.json'), {
+        return fs.outputJSON(pathResolve.resolveDocsPath('docs-src/app.json'), {
             "name": name,
             "background": "BackgroundColor",
             "logo": "./static/icon.svg",

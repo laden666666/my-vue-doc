@@ -1,15 +1,13 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './components/'
-import app from 'docs-src/app.js'
+import 'docs-src/app.js'
 
 import MyDialog from 'my-vue-dialog';
 import 'my-vue-dialog/dist/my-vue-dialog.css';
 import './locales'
+
 Vue.use(MyDialog)
 
 import {Icon, Button, Tooltip, Row, Col, Timeline, TimelineItem} from 'iview';
@@ -34,7 +32,7 @@ history.scrollRestoration = 'manual'
         window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    // Webkit中此取消方法的名字变了
                                       window[vendors[x] + 'CancelRequestAnimationFrame'];
     }
- 
+
     if (!window.requestAnimationFrame) {
         window.requestAnimationFrame = function(callback, element) {
             var currTime = new Date().getTime();

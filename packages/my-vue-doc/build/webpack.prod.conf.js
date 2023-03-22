@@ -1,10 +1,9 @@
 'use strict'
-const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const pathResolve = require('./pathResolve')
-const app = require(pathResolve.resovleDocsPath('./docs-src/app.json'))
+const app = require(pathResolve.resolveDocsPath('./docs-src/app.json'))
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -13,8 +12,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var PrerenderSpaPlugin = require('prerender-spa-plugin')
-
-const env = require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
     module: {
@@ -75,7 +72,7 @@ const webpackConfig = merge(baseWebpackConfig, {
                 // more options:
                 // https://github.com/kangax/html-minifier#options-quick-reference
             },
-            template: pathResolve.resovleFramePath('./index.html'),
+            template: pathResolve.resolveLibPath('./index.html'),
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
         }),
@@ -92,7 +89,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         //             module.resource &&
         //             /\.js$/.test(module.resource) &&
         //             module.resource.indexOf(
-        //                 pathResolve.resovleDocsPath('./node_modules')
+        //                 pathResolve.resolveDocsPath('./node_modules')
         //             ) === 0
         //         )
         //     }
@@ -116,14 +113,14 @@ const webpackConfig = merge(baseWebpackConfig, {
         // copy custom static assets
         new CopyWebpackPlugin([
             {
-                from: pathResolve.resovleDocsPath('./docs-src/static'),
+                from: pathResolve.resolveDocsPath('./docs-src/static'),
                 to: config.build.assetsSubDirectory,
                 ignore: ['.*']
             }
         ]),
         new PrerenderSpaPlugin(
             // 编译后的html需要存放的路径
-            pathResolve.resovleDocsPath('./docs/'),
+            pathResolve.resolveDocsPath('./docs/'),
             // 列出哪些路由需要预渲染
             [ '/' ]
         )

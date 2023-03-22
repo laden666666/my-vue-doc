@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/laden666666/my-vue-doc/issues"
   },
+  "scripts": {
+
+  },
   "homepage": "https://github.com/laden666666/my-vue-doc#readme",
   "engines": {
     "node": ">= 6.0.0",

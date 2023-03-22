@@ -1,44 +1,39 @@
-'use strict'
+const { VueLoaderPlugin } = require('vue-loader');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const path = require('path')
-const utils = require('./utils')
-const config = require('../config')
-const pathResolve = require('./pathResolve')
-const app = require(pathResolve.resovleDocsPath('./docs-src/app.json'))
-const vueLoaderConfig = require('./vue-loader.conf')
+const pathResolve = require('./pathResolve');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const app = require(pathResolve.resolveDocsPath('./docs-src/app.json'))
 
 module.exports = {
-    context: pathResolve.resovleFramePath('./'),
+    context: pathResolve.resolveLibPath('./'),
     entry: {
-        app: pathResolve.resovleFramePath('./src/main.js'),
+        app: pathResolve.resolveLibPath('./src/main.js'),
     },
     output: {
-        path: config.build.assetsRoot,
+        path: pathResolve.resolveDocsPath('./docs'),
         filename: '[name].js',
-        publicPath: process.env.NODE_ENV === 'production'
-            ? config.build.assetsPublicPath
-            : config.dev.assetsPublicPath
+        publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         modules: [
-            pathResolve.resovleFramePath('./node_modules'), 
-            pathResolve.resovleDocsPath('./node_modules')
+            pathResolve.resolveLibPath('./node_modules'),
+            pathResolve.resolveDocsPath('./node_modules')
         ],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            'vue': pathResolve.resovleAnyPath('./node_modules/vue'),
-            'vuex': pathResolve.resovleAnyPath('./node_modules/vuex'),
-            [app.name]: pathResolve.resovleDocsPath('./'),
-            'docs-src': pathResolve.resovleDocsPath('./docs-src'),
-            'app-name': pathResolve.resovleDocsPath('./'),
-            'background': pathResolve.resovleFramePath('./src/components/Background/strategy/', app.background + '.vue')
+            'vue': pathResolve.resolveLibNpmPath('vue'),
+            [app.name]: pathResolve.resolveDocsNpmPath(app.name),
+            'docs-src': pathResolve.resolveDocsPath('./docs-src'),
+            'app-name': pathResolve.resolveDocsPath('./'),
+            'background': pathResolve.resolveLibPath('./src/components/Background/strategy/', app.background + '.vue')
         }
     },
     resolveLoader: {
         // 告诉 webpack 该去那个目录下找 loader 模块
         modules: [
-            pathResolve.resovleDocsPath('node_modules'), 
-            pathResolve.resovleFramePath('./node_modules'), 
+            pathResolve.resolveLibPath('./node_modules'),
             path.resolve(__dirname, 'loader')
         ]
     },
@@ -46,32 +41,22 @@ module.exports = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: [{
-                    loader: 'vue-source-loader',
-                }, {
+                use: [{
                     loader: 'vue-loader',
-                    options: vueLoaderConfig
+                }, {
+                    loader: 'vue-source-loader',
                 }]
-             
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                options: require('./babelOptions.js'),
-                include: [
-                    pathResolve.resovleDocsPath('./docs-src'), 
-                    pathResolve.resovleFramePath('./src'), 
-                    pathResolve.resovleAnyPath('./node_modules/webpack-dev-server/client'), 
-                    pathResolve.resovleAnyPath('./node_modules/vue-particles'), 
-                    pathResolve.resovleAnyPath('./node_modules/iview'), 
-                ]
+                options: require('./babelOptions.js')
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -79,7 +64,6 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -87,21 +71,27 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader", "postcss-loader"]
+            },
+            {
+                test: /\.less$/i,
+                use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
             }
         ]
     },
-    node: {
-        // prevent webpack from injecting useless setImmediate polyfill because Vue
-        // source contains it (although only uses it if it's native).
-        setImmediate: false,
-        // prevent webpack from injecting mocks to Node native modules
-        // that does not make sense for the client
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty'
-    }
+    plugins: [
+        new FriendlyErrorsWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+            title: app.name,
+            describe: app.describe,
+            inject: true
+        }),
+        new VueLoaderPlugin(),
+    ]
 }
