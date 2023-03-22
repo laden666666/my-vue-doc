@@ -26,9 +26,3 @@ exports.resolveDocsNpmPath = function(npmName) {
         return path.join(packagePath, '..');
     }
 }
-
-//获取任意一个存在的目录
-exports.resolveAnyPath = function(...relativePath){
-    return fs.existsSync(exports.resolveDocsPath(...relativePath)) ? exports.resolveDocsPath(...relativePath)
-        : exports.resolveLibPath(...relativePath)
-}
