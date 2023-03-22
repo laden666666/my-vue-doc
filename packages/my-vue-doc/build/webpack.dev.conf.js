@@ -1,4 +1,3 @@
-'use strict'
 const pathResolve = require('./pathResolve')
 const merge = require('webpack-merge').merge;
 const baseWebpackConfig = require('./webpack.base.conf')

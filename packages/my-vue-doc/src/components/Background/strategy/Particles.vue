@@ -19,11 +19,11 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import VueParticles from 'vue-particles'
-Vue.use(VueParticles)
+import VueParticles from './particles-lib/vue-particles.vue'
 export default {
-    
+    components: {
+        VueParticles
+    }
 }
 </script>
 

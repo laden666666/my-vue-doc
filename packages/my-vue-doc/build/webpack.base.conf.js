@@ -3,6 +3,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const path = require('path')
 const pathResolve = require('./pathResolve');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const app = require(pathResolve.resolveDocsPath('./docs-src/app.json'))
 
 module.exports = {
@@ -42,9 +43,9 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: [{
-                    loader: 'vue-loader',
-                }, {
                     loader: 'vue-source-loader',
+                }, {
+                    loader: 'vue-loader',
                 }]
             },
             {
@@ -52,27 +53,27 @@ module.exports = {
                 loader: 'babel-loader',
                 options: require('./babelOptions.js')
             },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                }
-            },
-            {
-                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                }
-            },
-            {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                }
-            },
+            // {
+            //     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            //     loader: 'url-loader',
+            //     options: {
+            //         limit: 100000,
+            //     }
+            // },
+            // {
+            //     test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+            //     loader: 'url-loader',
+            //     options: {
+            //         limit: 100000,
+            //     }
+            // },
+            // {
+            //     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+            //     loader: 'url-loader',
+            //     options: {
+            //         limit: 100000,
+            //     }
+            // },
             {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader", "postcss-loader"]

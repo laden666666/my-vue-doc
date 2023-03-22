@@ -1,4 +1,3 @@
-
 const childProcess = require('child_process');
 const pathResolve = require('./pathResolve');
 
